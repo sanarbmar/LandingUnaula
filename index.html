@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- =====================================================================
+       CAMBIOS DEL 16 DE SEPTIEMBRE DE 2026
+
+       Este archivo trae 2 bloques nuevos respecto a la versión anterior.
+       Busca el texto  CAMBIO 16-SEP  para saltar a cada uno: están
+       delimitados por comentarios INICIO / FIN.
+
+       CAMBIO 16-SEP #1 — Sección "Encuentro de Egresados UNAULA 60 Años",
+                          tarjeta "Horario".
+                          Apertura de puertas y registro 6:30 p. m.
+                          El evento finaliza a las 2:00 a. m.
+
+       CAMBIO 16-SEP #2 — Sección "Preguntas frecuentes".
+                          Pregunta nueva sobre código de vestuario.
+
+       No hay cambios en assets/css/estilos.css ni en assets/js/main.js.
+       ===================================================================== -->
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Encuentro de Egresados UNAULA 60 Años | Registro Oficial</title>
@@ -147,10 +165,16 @@
             </svg>
           </div>
           <div class="vidrio-label">Horario</div>
+          <!-- ===== INICIO CAMBIO 16-SEP #1 =====================================
+               Reemplaza el texto anterior, que decía:
+                   Hora de inicio<br>
+                   Hora de finalización
+               ==================================================================== -->
           <div class="vidrio-valor">
-            Hora de inicio<br>
-            Hora de finalización
+            Apertura de puertas y registro: 6:30 p. m.<br>
+            El evento finaliza a las 2:00 a. m.
           </div>
+          <!-- ===== FIN CAMBIO 16-SEP #1 ===== -->
         </div>
       </div>
 
@@ -409,6 +433,22 @@
           <summary>¿Se permite fumar, vapear o consumir sustancias psicoactivas? <span class="faq-flecha">▼</span></summary>
           <div class="faq-contenido">No. No está permitido el consumo de cigarrillo, vapeadores ni sustancias psicoactivas en ninguna de las áreas del evento.</div>
         </details>
+        <!-- ===== INICIO CAMBIO 16-SEP #2 =====================================
+             Pregunta nueva. Va dentro de <div class="faq-lista">, después de la
+             pregunta sobre sustancias y antes de "¿Cómo recibiré la confirmación?"
+             ==================================================================== -->
+        <details class="faq-item">
+          <summary>¿Hay código de vestuario? <span class="faq-flecha">▼</span></summary>
+          <div class="faq-contenido">
+            <strong>CASUAL ELEGANTE</strong><br><br>
+            Ven a celebrar, reencontrarte y disfrutar.<br>
+            Vístete como te sientas mejor: elegante, cómodo y con tu propio estilo.<br>
+            No es una gala, ¡es una fiesta!<br><br>
+            <em>“Lo importante no es cómo vienes vestido, sino que vengas a celebrar nuestra historia.”</em>
+          </div>
+        </details>
+        <!-- ===== FIN CAMBIO 16-SEP #2 ===== -->
+
         <details class="faq-item">
           <summary>¿Cómo recibiré la confirmación? <span class="faq-flecha">▼</span></summary>
           <div class="faq-contenido">La invitación será enviada y difundida a través de diferentes canales, como redes sociales, correo electrónico, WhatsApp y códigos QR, con el fin de facilitar el acceso a la información y garantizar una mayor cobertura.</div>
