@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- =====================================================================
+       CAMBIOS DEL 16 DE SEPTIEMBRE DE 2026
+
+       Este archivo trae 2 bloques nuevos respecto a la versión anterior.
+       Busca el texto  CAMBIO 16-SEP  para saltar a cada uno: están
+       delimitados por comentarios INICIO / FIN.
+
+       CAMBIO 16-SEP #1 — Sección "Encuentro de Egresados UNAULA 60 Años",
+                          tarjeta "Horario".
+                          Apertura de puertas y registro 6:30 p. m.
+                          El evento finaliza a las 2:00 a. m.
+
+       CAMBIO 16-SEP #2 — Sección "Preguntas frecuentes".
+                          Pregunta nueva sobre código de vestuario.
+
+       No hay cambios en assets/css/estilos.css ni en assets/js/main.js.
+       ===================================================================== -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encuentro de Egresados UNAULA 60 Años | Registro Oficial</title>
+  <meta name="description" content="60 años haciendo historia. Construyendo futuro. Acompáñanos a celebrar el Encuentro de Egresados UNAULA 60 Años en Plaza Mayor Medellín.">
+
+  <!-- Versión de demostración bajo un dominio provisional. QUITAR esta línea al
+       publicar en el dominio oficial de UNAULA, o la página no se indexará. -->
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- Icono de la pestaña: emblema de UNAULA recortado del logo institucional -->
+  <link rel="icon" href="assets/img/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Metadatos Open Graph para WhatsApp y Redes Sociales -->
+  <meta property="og:title" content="Encuentro de Egresados UNAULA 60 Años">
+  <meta property="og:description" content="60 años haciendo historia. Construyendo futuro. Reserva tu lugar en el Encuentro de Egresados UNAULA.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CO">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#AC2422">
+
+  <!-- Tipografía Google Fonts: Archivo Variable -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+
+  <div id="region-anuncios" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- BARRA SUPERIOR -->
+  <header class="barra-superior">
+    <div class="barra-superior-inner">
+      <a href="#seccion-hero" aria-label="Inicio UNAULA 60 Años">
+        <img src="assets/img/logo-unaula.png" alt="Universidad Autónoma Latinoamericana" class="logo-barra">
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#el-encuentro" class="nav-enlace">El Encuentro</a>
+        <a href="#que-vamos-a-celebrar" class="nav-enlace">Qué celebraremos</a>
+        <a href="#sec-agenda" class="nav-enlace">Agenda</a>
+        <a href="#faq" class="nav-enlace">Preguntas</a>
+        <a href="#inscripcion" class="btn btn-primario" onclick="irAInscripcion(event)">INSCRIBIRME</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BARRA FIJA CON EL LLAMADO A LA ACCIÓN -->
+  <aside class="barra-fija" id="barra-fija" aria-label="Acciones rápidas del evento">
+    <div class="barra-fija-inner">
+      <a href="#inscripcion" class="barra-btn barra-btn-primario" onclick="irAInscripcion(event)">
+        INSCRÍBETE
+      </a>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       SECCIÓN 1 — HERO
+       ======================================================================== -->
+  <section class="hero" id="seccion-hero" aria-label="Hero conmemorativo 60 años">
+    <div class="hero__fondo" aria-hidden="true"></div>
+    <img class="hero__curva" src="assets/img/curva-dorada.png" alt="" aria-hidden="true">
+
+    <div class="hero__contenido">
+      <img class="hero__logo" src="assets/img/logo-unaula-60.png"
+           alt="UNAULA · 60 años 1966-2026">
+      <!-- <h1 class="hero__titulo">&ldquo;60&nbsp;años&rdquo;.</h1> -->
+    </div>
+
+    <div class="onda" aria-hidden="true">
+      <img class="onda__oro"  src="assets/img/onda-dorada.png" alt="">
+      <img class="onda__roja" src="assets/img/onda-roja.png"  alt="">
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECCIÓN 2 — BLOQUE ROJO DE BIENVENIDA
+       ======================================================================== -->
+  <section class="seccion-bienvenida" id="bienvenida" aria-label="Bienvenida al encuentro">
+    <div class="contenedor-ancho">
+      <div class="escalones-bienvenida con-trazo">
+        <span class="esc-l1">AQUÍ SE</span>
+        <span class="esc-l2">FORMAN</span>
+        <span class="esc-l1 esc-l1--menor">LOS QUE HACEN</span>
+        <span class="esc-l3"><span class="trazo-fin trazo-fin-dorado">HISTORIA</span></span>
+      </div>
+
+      <p class="parrafo-bienvenida">
+        UNAULA cumple 60 años y queremos celebrarlo contigo. Después de seis décadas formando profesionales, acompañando proyectos de vida y aportando a la transformación de la sociedad, llegó el momento de volver a encontrarnos con quienes también hacen parte de esta historia.
+      </p>
+
+      <div class="bienvenida-botones">
+        <a href="#inscripcion" class="btn btn-crema-rojo" onclick="irAInscripcion(event)">
+          QUIERO INSCRIBIRME
+        </a>
+        <a href="#el-encuentro" class="btn btn-borde-dorado">
+          CONOCE EL ENCUENTRO
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECCIÓN 3 — DATOS DEL EVENTO
+       ======================================================================== -->
+  <section class="seccion-datos" id="datos-evento" aria-label="Datos del evento">
+    <div class="contenedor-ancho">
+      <h2 class="titulo-datos">ENCUENTRO DE EGRESADOS UNAULA 60 AÑOS</h2>
+
+      <div class="grid-vidrio-3">
+        <!-- Fecha -->
+        <div class="tarjeta-vidrio">
+          <div class="icono-vidrio" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+          </div>
+          <div class="vidrio-label">Fecha</div>
+          <div class="vidrio-valor">Viernes 6 de noviembre de 2026</div>
+        </div>
+
+        <!-- Lugar -->
+        <div class="tarjeta-vidrio">
+          <div class="icono-vidrio" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <div class="vidrio-label">Lugar</div>
+          <div class="vidrio-valor">Plaza Mayor Medellín — Pabellón Verde</div>
+        </div>
+
+        <!-- Horario -->
+        <div class="tarjeta-vidrio">
+          <div class="icono-vidrio" aria-hidden="true">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <div class="vidrio-label">Horario</div>
+          <!-- ===== INICIO CAMBIO 16-SEP #1 =====================================
+               Reemplaza el texto anterior, que decía:
+                   Hora de inicio<br>
+                   Hora de finalización
+               ==================================================================== -->
+          <div class="vidrio-valor">
+            Apertura de puertas y registro: 6:30 p. m.<br>
+            El evento finaliza a las 2:00 a. m.
+          </div>
+          <!-- ===== FIN CAMBIO 16-SEP #1 ===== -->
+        </div>
+      </div>
+
+      <p class="parrafo-datos">
+        Una noche para volver a encontrarnos, recordar lo que hemos construido y celebrar todo lo que está por venir.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       SECCIÓN 4 — ¿POR QUÉ NOS ENCONTRAMOS?
+       ======================================================================== -->
+  <section class="seccion-por-que con-marca-agua" id="por-que-nos-encontramos" aria-label="¿Por qué nos encontramos?">
+    <div class="contenedor-estrecho">
+      <div class="titular-bloque">
+        <span class="titular-l1" style="color: var(--rojo-vivo);">¿POR QUÉ NOS</span>
+        <span class="titular-l2" style="color: var(--rojo-vivo);">ENCONTRAMOS?</span>
+      </div>
+
+      <div class="subtitulo-dorado con-trazo">Volver también es recordar quiénes <span class="trazo-fin trazo-fin-rojo">somos</span></div>
+
+      <div class="versos-bloque">
+        <span>Hay lugares a los que uno vuelve y reconoce inmediatamente.</span>
+        <span class="verso-sep">·</span>
+        <span>Una conversación.</span>
+        <span class="verso-sep">·</span>
+        <span>Un profesor.</span>
+        <span class="verso-sep">·</span>
+        <span>Un amigo.</span>
+        <span class="verso-sep">·</span>
+        <span>Un pasillo.</span>
+        <span class="verso-sep">·</span>
+        <span>Una historia.</span>
+      </div>
+
+      <p class="parrafo-comun">
+        Durante 60 años, miles de personas han pasado por UNAULA y han llevado consigo parte de esta Universidad. Hoy queremos volver a encontrarnos para celebrar esas historias, reconocer nuestros caminos y recordar que, aunque hayan pasado los años, seguimos siendo parte de una misma comunidad.
+      </p>
+
+      <div class="cierre-por-que">
+        Porque no se trata solamente de haber estudiado en UNAULA. Se trata de seguir haciendo parte de UNAULA.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       SECCIÓN 5 — ¿QUÉ VAMOS A CELEBRAR?
+       ======================================================================== -->
+  <section class="seccion-celebrar" id="que-vamos-a-celebrar" aria-label="¿Qué vamos a celebrar?">
+    <div class="contenedor-ancho">
+      <div class="titular-bloque">
+        <span class="titular-l1" style="color: var(--texto-claro);">60 años. Miles de historias.</span>
+        <span class="titular-l2" style="color: var(--texto-claro);">Un mismo orgullo.</span>
+      </div>
+
+      <div class="subtitulo-dorado con-trazo">En este encuentro <span class="trazo-fin trazo-fin-crema">celebraremos:</span></div>
+
+      <div class="grid-celebrar-4">
+        <!-- 1: Nuestra historia -->
+        <div class="card-celebrar-rojo">
+          <img src="assets/img/foto-celebrar-1-historia.jpg" alt="Historia institucional UNAULA" class="img-card-celebrar" loading="lazy">
+          <div class="card-celebrar-cuerpo">
+            <h3 class="card-celebrar-titulo">Nuestra historia</h3>
+            <p class="card-celebrar-desc">Seis décadas de aprendizajes, decisiones, sueños y transformaciones.</p>
+          </div>
+        </div>
+
+        <!-- 2: Nuestros egresados -->
+        <div class="card-celebrar-rojo">
+          <img src="assets/img/foto-celebrar-2-egresados.jpg" alt="Egresados de UNAULA" class="img-card-celebrar" loading="lazy">
+          <div class="card-celebrar-cuerpo">
+            <h3 class="card-celebrar-titulo">Nuestros egresados</h3>
+            <p class="card-celebrar-desc">Las personas que han llevado el espíritu unaulista a diferentes lugares y escenarios de la sociedad.</p>
+          </div>
+        </div>
+
+        <!-- 3: Nuestro legado -->
+        <div class="card-celebrar-rojo">
+          <img src="assets/img/foto-celebrar-3-legado.jpg" alt="Legado en la sociedad" class="img-card-celebrar" loading="lazy">
+          <div class="card-celebrar-cuerpo">
+            <h3 class="card-celebrar-titulo">Nuestro legado</h3>
+            <p class="card-celebrar-desc">Todo aquello que permanece en las personas, las familias, las comunidades y las organizaciones.</p>
+          </div>
+        </div>
+
+        <!-- 4: Nuestro futuro -->
+        <div class="card-celebrar-rojo">
+          <img src="assets/img/foto-celebrar-4-futuro.jpg" alt="Construcción del futuro" class="img-card-celebrar" loading="lazy">
+          <div class="card-celebrar-cuerpo">
+            <h3 class="card-celebrar-titulo">Nuestro futuro</h3>
+            <p class="card-celebrar-desc">Porque cumplir 60 años no significa mirar únicamente hacia atrás. Significa tener la experiencia para seguir construyendo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       SECCIÓN 6 — EL ENCUENTRO
+       ======================================================================== -->
+  <section class="seccion-encuentro con-marca-agua" id="el-encuentro" aria-label="El Encuentro">
+    <div class="contenedor-estrecho">
+      <div class="titular-bloque con-trazo">
+        <span class="titular-l1" style="color: var(--rojo-vivo);">Una noche para volver a</span>
+        <span class="titular-l2" style="color: var(--rojo-vivo);">SENTIRNOS <span class="trazo-fin trazo-fin-rojo">PARTE</span></span>
+      </div>
+
+      <p class="parrafo-encuentro">
+        El Encuentro de Egresados será uno de los grandes momentos de la celebración de los 60 años de UNAULA. Será mucho más que una fiesta. Será un espacio para reencontrarnos, reconocernos, celebrar nuestros logros y fortalecer los vínculos que nos unen con la Universidad y con las generaciones que han hecho parte de ella. Queremos que cada egresado llegue con una historia y se vaya con nuevas razones para seguir conectado con UNAULA. El encuentro está concebido como ese momento en el que la historia de la Universidad se encuentra con las personas que la hicieron posible.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       SECCIÓN 8 — ¿QUIÉNES ESTÁN INVITADOS?
+       ======================================================================== -->
+  <section class="seccion-invitados" id="quienes-estan-invitados" aria-label="Invitados al encuentro">
+    <div class="contenedor-ancho">
+      <div class="titular-bloque con-trazo">
+        <span class="titular-l1" style="color: var(--texto-claro);">Si alguna vez hiciste parte de UNAULA,</span>
+        <span class="titular-l2" style="color: var(--texto-claro);">esta celebración también es <span class="trazo-fin trazo-fin-dorado">tuya.</span></span>
+      </div>
+
+      <div class="grid-invitados-2col">
+        <div>
+          <p class="parrafo-comun" style="color: var(--texto-claro); text-align: left;">
+            Invitamos a nuestros egresados de las diferentes generaciones, programas y facultades. Queremos reunir una comunidad diversa:
+          </p>
+
+          <div class="lista-invitados">
+            <div class="item-invitado"><div class="viñeta-dorada"></div><span>Egresados de diferentes generaciones.</span></div>
+            <div class="item-invitado"><div class="viñeta-dorada"></div><span>Profesionales de diferentes áreas.</span></div>
+            <div class="item-invitado"><div class="viñeta-dorada"></div><span>Egresados que viven en Medellín y el Valle de Aburrá.</span></div>
+            <div class="item-invitado"><div class="viñeta-dorada"></div><span>Egresados que hoy están en otras ciudades o países.</span></div>
+            <div class="item-invitado"><div class="viñeta-dorada"></div><span>Emprendedores, investigadores, líderes sociales, empresarios, académicos y profesionales.</span></div>
+            <div class="item-invitado"><div class="viñeta-dorada"></div><span>Y, sobre todo, personas que quieran volver a encontrarse con la Universidad.</span></div>
+          </div>
+        </div>
+
+        <div>
+          <img src="assets/img/foto-invitados.jpg" alt="Comunidad de egresados de UNAULA" class="foto-invitados" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       SECCIÓN 9 — HISTORIAS DE ÉXITO (Condicional)
+       ======================================================================== -->
+  <section class="seccion-historias con-marca-agua" id="sec-historias" aria-label="Historias de éxito">
+    <div class="contenedor-ancho">
+      <div class="titular-bloque con-trazo">
+        <span class="titular-l1" style="color: var(--rojo-vivo);">Detrás de cada historia de éxito</span>
+        <span class="titular-l2" style="color: var(--rojo-vivo);">hay una historia de <span class="trazo-fin trazo-fin-rojo">UNAULA</span></span>
+      </div>
+
+      <p class="parrafo-comun">
+        Nuestros egresados son la expresión viva del legado de la Universidad. Durante la celebración conoceremos historias de personas que han generado impacto desde diferentes campos: liderazgo, emprendimiento, sector público, empresa, academia, cultura, investigación y transformación social. Porque para UNAULA el éxito no se mide solamente por el reconocimiento profesional. También se mide por la capacidad de transformar vidas y aportar a la sociedad.
+      </p>
+
+      <div class="carrusel-wrap">
+        <button type="button" class="carrusel-btn" onclick="scrollHistorias(-1)" aria-label="Ver historias anteriores">‹</button>
+
+        <div class="carrusel-track" id="carrusel-historias">
+          <!-- Tarjeta 1 -->
+          <button type="button" class="card-historia-carrusel" onclick="abrirModalHistoria(0)" aria-haspopup="dialog" aria-label="Abrir historia: Cuando servir se convierte en legado">
+            <img src="assets/img/foto-celebrar-1-historia.jpg" alt="Cuando servir se convierte en legado" class="foto-historia-item" loading="lazy">
+            <div class="historia-titulo-item">Cuando servir se convierte en legado</div>
+            <div class="historia-desc-item">UNAULA forma líderes comprometidos con el…</div>
+            <span class="historia-ver-mas">ver mas</span>
+          </button>
+
+          <!-- Tarjeta 2 -->
+          <button type="button" class="card-historia-carrusel" onclick="abrirModalHistoria(1)" aria-haspopup="dialog" aria-label="Abrir historia: Construir empresa, construir país">
+            <img src="assets/img/foto-celebrar-1-historia.jpg" alt="Construir empresa, construir país" class="foto-historia-item" loading="lazy">
+            <div class="historia-titulo-item">Construir empresa, construir país</div>
+            <div class="historia-desc-item">Los egresados UNAULA crean oportunidades y generan…</div>
+            <span class="historia-ver-mas">ver mas</span>
+          </button>
+
+          <!-- Tarjeta 3 -->
+          <button type="button" class="card-historia-carrusel" onclick="abrirModalHistoria(2)" aria-haspopup="dialog" aria-label="Abrir historia: Cambiar vidas también es éxito">
+            <img src="assets/img/foto-celebrar-1-historia.jpg" alt="Cambiar vidas también es éxito" class="foto-historia-item" loading="lazy">
+            <div class="historia-titulo-item">Cambiar vidas también es éxito</div>
+            <div class="historia-desc-item">Transformar vidas es una forma de construir legado…</div>
+            <span class="historia-ver-mas">ver mas</span>
+          </button>
+
+          <!-- Tarjeta 4 -->
+          <button type="button" class="card-historia-carrusel" onclick="abrirModalHistoria(3)" aria-haspopup="dialog" aria-label="Abrir historia: El conocimiento que transforma el futuro">
+            <img src="assets/img/foto-celebrar-1-historia.jpg" alt="El conocimiento que transforma el futuro" class="foto-historia-item" loading="lazy">
+            <div class="historia-titulo-item">El conocimiento que transforma el futuro</div>
+            <div class="historia-desc-item">El conocimiento genera transformación y progreso…</div>
+            <span class="historia-ver-mas">ver mas</span>
+          </button>
+        </div>
+
+        <button type="button" class="carrusel-btn" onclick="scrollHistorias(1)" aria-label="Ver historias siguientes">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECCIÓN 10 — AGENDA (Condicional)
+       ======================================================================== -->
+  <section class="seccion-agenda" id="sec-agenda" aria-label="Agenda del encuentro">
+    <div class="contenedor-ancho">
+      <h2 class="titulo-datos" style="margin-bottom: 12px;">Así viviremos este encuentro</h2>
+      <p class="aviso-preliminar-agenda">Agenda preliminar. Sujeta a confirmación por parte de la producción del evento.</p>
+
+      <!-- Las tarjetas las genera renderizarAgenda() a partir del arreglo AGENDA,
+           al inicio de assets/js/main.js. Editar aquí no sirve: el JavaScript
+           reemplaza el contenido de este contenedor al cargar la página. -->
+      <div class="grid-agenda-6" id="grid-agenda"></div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       SECCIÓN 11 — PREGUNTAS FRECUENTES
+       ======================================================================== -->
+  <section class="seccion-faq con-marca-agua" id="faq" aria-label="Preguntas frecuentes">
+    <div class="contenedor-estrecho">
+      <div class="titular-bloque con-trazo">
+        <span class="titular-l1" style="color: var(--rojo-vivo);">Resolvemos tus dudas</span>
+        <span class="titular-l2" style="color: var(--rojo-vivo);">PREGUNTAS <span class="trazo-fin trazo-fin-rojo">FRECUENTES</span></span>
+      </div>
+
+      <div class="faq-lista">
+        <details class="faq-item">
+          <summary>¿Cuándo es el Encuentro de Egresados? <span class="faq-flecha">▼</span></summary>
+          <div class="faq-contenido">El encuentro se realizará el viernes 6 de noviembre de 2026.</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Dónde será? <span class="faq-flecha">▼</span></summary>
+          <div class="faq-contenido">En Plaza Mayor Medellín, en el Pabellón Verde.</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Quiénes pueden participar? <span class="faq-flecha">▼</span></summary>
+          <div class="faq-contenido">Egresados de UNAULA de las diferentes generaciones y programas.</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿La inscripción tiene algún costo? <span class="faq-flecha">▼</span></summary>
+          <div class="faq-contenido">No. La inscripción es gratuita.</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Puedo asistir con acompañante? <span class="faq-flecha">▼</span></summary>
+          <div class="faq-contenido">Sin acompañantes, es una integración de la U para nuestros egresados</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Se permite fumar, vapear o consumir sustancias psicoactivas? <span class="faq-flecha">▼</span></summary>
+          <div class="faq-contenido">No. No está permitido el consumo de cigarrillo, vapeadores ni sustancias psicoactivas en ninguna de las áreas del evento.</div>
+        </details>
+        <!-- ===== INICIO CAMBIO 16-SEP #2 =====================================
+             Pregunta nueva. Va dentro de <div class="faq-lista">, después de la
+             pregunta sobre sustancias y antes de "¿Cómo recibiré la confirmación?"
+             ==================================================================== -->
+        <details class="faq-item">
+          <summary>¿Hay código de vestuario? <span class="faq-flecha">▼</span></summary>
+          <div class="faq-contenido">
+            <strong>CASUAL ELEGANTE</strong><br><br>
+            Ven a celebrar, reencontrarte y disfrutar.<br>
+            Vístete como te sientas mejor: elegante, cómodo y con tu propio estilo.<br>
+            No es una gala, ¡es una fiesta!<br><br>
+            <em>“Lo importante no es cómo vienes vestido, sino que vengas a celebrar nuestra historia.”</em>
+          </div>
+        </details>
+        <!-- ===== FIN CAMBIO 16-SEP #2 ===== -->
+
+        <details class="faq-item">
+          <summary>¿Cómo recibiré la confirmación? <span class="faq-flecha">▼</span></summary>
+          <div class="faq-contenido">La invitación será enviada y difundida a través de diferentes canales, como redes sociales, correo electrónico, WhatsApp y códigos QR, con el fin de facilitar el acceso a la información y garantizar una mayor cobertura.</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué pasa si actualicé mis datos pero no puedo asistir? <span class="faq-flecha">▼</span></summary>
+          <div class="faq-contenido">La actualización de datos permitirá que UNAULA pueda mantener el contacto contigo para futuras actividades de la comunidad de egresados.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ========================================================================
+       SECCIÓN 13 — CIERRE EMOCIONAL
+       ======================================================================== -->
+  <section class="seccion-cierre" aria-label="Cierre">
+    <div class="contenedor-estrecho">
+      <div class="titular-bloque con-trazo">
+        <span class="titular-l1" style="color: var(--texto-claro);">Reserva tu</span>
+        <span class="titular-l2" style="color: var(--texto-claro); font-size: 3.25rem;"><span class="trazo-fin trazo-fin-dorado">LUGAR</span></span>
+      </div>
+
+      <div class="versos-cierre">
+        <div class="verso-cierre-item">60 años se cuentan en décadas.</div>
+        <div class="verso-cierre-item">Pero también se cuentan en personas.</div>
+        <div class="verso-cierre-item">En quienes llegaron con un sueño.</div>
+        <div class="verso-cierre-item">En quienes encontraron una oportunidad.</div>
+        <div class="verso-cierre-item">En quienes se graduaron.</div>
+        <div class="verso-cierre-item">En quienes transformaron su comunidad.</div>
+        <div class="verso-cierre-item">En quienes llevaron el nombre de UNAULA a otros lugares.</div>
+      </div>
+
+      <div class="cierre-llamado">Ahora queremos volver a encontrarnos contigo.</div>
+      <div class="cierre-destacado-dorado">6 DE NOVIEMBRE · PLAZA MAYOR MEDELLÍN</div>
+
+      <a href="#inscripcion" class="btn btn-crema-rojo" style="font-size: 15px; padding: 14px 32px;" onclick="irAInscripcion(event)">
+        QUIERO INSCRIBIRME
+      </a>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       PIE DE PÁGINA — REDES SOCIALES Y DATOS INSTITUCIONALES
+
+       Los iconos se leen de assets/img/social/. Faltan los archivos: hay que
+       descargarlos de las páginas de recursos de marca de cada plataforma y
+       guardarlos con estos nombres exactos, en SVG monocromo:
+       facebook.svg  instagram.svg  x.svg  linkedin.svg  threads.svg
+       youtube.svg   spotify.svg
+       Mientras no estén, cada botón muestra el nombre de la red en texto.
+       ======================================================================== -->
+  <footer class="pie" aria-label="Redes sociales y datos de contacto">
+    <div class="contenedor-ancho">
+
+      <nav class="pie-redes" aria-label="Redes sociales de UNAULA">
+        <a class="pie-red" href="https://www.facebook.com/unaulamed/" target="_blank" rel="noopener noreferrer" aria-label="Facebook de UNAULA">
+          <img src="assets/img/social/facebook.svg" alt="Facebook" width="22" height="22">
+        </a>
+        <a class="pie-red" href="https://www.instagram.com/unaula_medellin/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de UNAULA">
+          <img src="assets/img/social/instagram.svg" alt="Instagram" width="22" height="22">
+        </a>
+        <a class="pie-red" href="https://x.com/Unaula" target="_blank" rel="noopener noreferrer" aria-label="X de UNAULA">
+          <img src="assets/img/social/x.svg" alt="X" width="22" height="22">
+        </a>
+        <a class="pie-red" href="https://www.linkedin.com/in/universidad-aut%C3%B3noma-latinoamericana-unaula-2b6371412/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de UNAULA">
+          <img src="assets/img/social/linkedin.png" alt="LinkedIn" width="22" height="22">
+        </a>
+        <a class="pie-red" href="https://www.threads.com/@unaula_medellin?xmt=AQG03ktdqcxzRI_kJARpu8zDIx-acrDooABFQR3UOlanw7s" target="_blank" rel="noopener noreferrer" aria-label="Threads de UNAULA">
+          <img src="assets/img/social/threads.svg" alt="Threads" width="22" height="22">
+        </a>
+        <a class="pie-red" href="https://www.youtube.com/@-UNAULA-" target="_blank" rel="noopener noreferrer" aria-label="YouTube de UNAULA">
+          <img src="assets/img/social/youtube.svg" alt="YouTube" width="22" height="22">
+        </a>
+        <a class="pie-red" href="https://open.spotify.com/show/1F27D6oRthEc00ZKpKK9Oi" target="_blank" rel="noopener noreferrer" aria-label="Spotify de UNAULA">
+          <img src="assets/img/social/spotify.svg" alt="Spotify" width="22" height="22">
+        </a>
+      </nav>
+
+      <p class="pie-correo">
+        <a href="mailto:egresados@unaula.edu.co">egresados@unaula.edu.co</a>
+      </p>
+
+      <p class="pie-institucion">
+        <a href="https://www.unaula.edu.co/" target="_blank" rel="noopener noreferrer">Universidad Autónoma Latinoamericana</a>
+      </p>
+      <p class="pie-dato">Carrera 55 N° 49-51. Medellín, Colombia.</p>
+      <p class="pie-dato">Teléfono: (+57) 604 511 21 99</p>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       MODAL NATIVO <dialog> — DETALLE DE HISTORIA DE ÉXITO
+       ======================================================================== -->
+  <dialog id="modal-historia" class="modal-historia" aria-labelledby="modal-historia-titulo">
+    <div class="modal-contenedor">
+      <div class="modal-header-img">
+        <img id="modal-historia-img" src="assets/img/foto-celebrar-1-historia.jpg" alt="Historia de éxito UNAULA" class="modal-img">
+        <button type="button" class="modal-btn-cerrar" onclick="cerrarModalHistoria()" aria-label="Cerrar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-cuerpo" tabindex="0">
+        <h3 class="modal-titulo con-trazo" id="modal-historia-titulo">[TÍTULO DE LA HISTORIA]</h3>
+        <div class="modal-meta" id="modal-historia-meta" style="display: none;"></div>
+        <div class="modal-texto" id="modal-historia-texto">[HISTORIA COMPLETA PENDIENTE]</div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ========================================================================
+       LÓGICA JAVASCRIPT VANILLA (FUNCIONAMIENTO INTACTO)
+       ======================================================================== -->
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
