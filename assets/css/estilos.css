@@ -1274,3 +1274,407 @@ dialog.modal-historia[open] {
   text-underline-offset: 3px;
 }
 /* ===== FIN CAMBIO 30-SEP ===== */
+
+/* ===== INICIO CAMBIO 30-SEP-B ==========================================
+   Ajustes para que la página quede como el diseño nuevo de Canva
+   ("LANDING PAGE"). Todas las medidas se tomaron del diseño a 1280 px de
+   ancho y se pasan a vw para que escalen igual; el comentario de cada
+   regla dice la medida de origen. Los botones y las preguntas frecuentes
+   no cambian.
+   ======================================================================= */
+
+/* --- 2. Hero ----------------------------------------------------------- */
+.hero__gracias {
+  font-size: clamp(28px, 4vw, 58px);           /* diseño: 417 px de ancho la 1.ª línea */
+  font-weight: 700;
+}
+.hero__aforo {
+  font-size: clamp(18px, 3.08vw, 44px);        /* diseño: 386 px la 1.ª línea */
+  font-weight: 400;
+  max-width: none;
+}
+
+/* --- 3. Bienvenida ----------------------------------------------------- */
+.bienvenida-mensaje {
+  font-size: clamp(15px, 2.05vw, 30px);        /* diseño: 450 px la 1.ª línea */
+  font-stretch: 62%;
+  line-height: 1.25;
+  color: var(--texto-claro);
+  margin: 0 auto 2.4rem;
+}
+
+/* --- 4. Datos del evento ----------------------------------------------- */
+.grid-vidrio-3 {
+  max-width: min(82vw, 1180px);
+  gap: 7.5vw;
+}
+.tarjeta-vidrio {
+  min-height: 21.5vw;                   /* diseño: tarjeta de 286 × 276 px */
+  min-width: 0;
+  justify-content: center;
+  gap: 1.2vw;
+  padding: 18px 12px;
+}
+.icono-vidrio {
+  width: clamp(44px, 9.4vw, 136px);
+  height: clamp(44px, 9.4vw, 136px);
+}
+.icono-vidrio svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.6;
+}
+.vidrio-valor {
+  font-size: clamp(15px, 2.42vw, 35px);        /* diseño: "6 de noviembre de 2026" = 227 px */
+  font-weight: 400;
+  font-stretch: 62%;
+  line-height: 1.1;
+}
+
+/* --- 5. ¿Por qué nos encontramos? --------------------------------------- */
+.porque-texto {
+  font-size: clamp(15px, 2.09vw, 30px);        /* diseño: 1.ª línea = 492 px */
+  font-stretch: 62%;
+  line-height: 1.2;
+  color: var(--texto);
+  max-width: min(80vw, 1150px);
+  margin: 1.5rem auto 0;
+  text-align: center;
+}
+.porque-texto p { margin: 0; }
+.porque-texto .porque-remate {
+  color: var(--rojo-vivo);
+  font-weight: 700;
+  font-size: 1.12em;
+  margin-top: 0.3em;
+}
+
+/* --- 6. Videos ---------------------------------------------------------- */
+.videos-titulo { white-space: normal; }
+.grid-videos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.94vw;                          /* diseño: 12 px */
+  max-width: min(87.8vw, 1264px);       /* diseño: 4 × 272 + 3 × 12 */
+  margin: 0 auto;
+}
+.card-video {
+  border: 1.5px solid var(--texto-claro);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.78vw 0.78vw 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.card-video__media,
+.card-video__iframe {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 252 / 427;              /* diseño: foto de 252 × 427 */
+  border: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0;
+  cursor: pointer;
+}
+.card-video__media:disabled { cursor: default; }
+.card-video__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.card-video__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 56px;
+  height: 56px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(172, 36, 34, 0.85);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+.card-video__play::after {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 17px;
+  border-style: solid;
+  border-width: 11px 0 11px 18px;
+  border-color: transparent transparent transparent var(--crema);
+}
+.card-video__media:disabled .card-video__play { display: none; }
+.card-video__ver {
+  background: none;
+  border: 0;
+  color: var(--texto-claro);
+  font-family: inherit;
+  font-weight: 700;
+  font-stretch: 62%;
+  font-size: clamp(14px, 2.18vw, 31px);        /* diseño: "Ver Video" = 86 px */
+  padding: 0.6em 0 0.7em;
+  cursor: pointer;
+}
+.card-video__ver:disabled { cursor: default; }
+
+/* --- 7. El Encuentro ----------------------------------------------------- */
+.parrafo-encuentro {
+  font-size: clamp(14px, 1.82vw, 26px);        /* diseño: línea "Queremos que…" = 878 px */
+  font-stretch: 62%;
+  line-height: 1.2;
+  max-width: min(72vw, 1040px);
+}
+.parrafo-encuentro p { margin: 0 0 1.15em; }
+.parrafo-encuentro p:last-child { margin-bottom: 0; }
+
+/* --- Titulares con tamaño propio en esta sección ----------------------- */
+#por-que-nos-encontramos .titular-l1 { font-size: clamp(34px, 6.39vw, 92px); }   /* diseño: 414 px */
+#quienes-estan-invitados .titular-l1 { font-size: clamp(24px, 4.4vw, 63px); }    /* diseño: 701 px */
+#quienes-estan-invitados .titular-l2 { font-size: clamp(30px, 5.2vw, 75px); }    /* diseño: 783 px */
+#sec-historias .titular-l1 { font-size: clamp(24px, 4.32vw, 62px); }             /* diseño: 562 px */
+#sec-historias .titular-l2 { font-size: clamp(30px, 5.63vw, 81px); }             /* diseño: 700 px */
+
+/* --- 8 y 9. Titulares que no van en mayúsculas ------------------------- */
+.titular-l2--natural { text-transform: none; }
+
+/* --- 8. Invitados -------------------------------------------------------- */
+.invitados-texto {
+  font-size: clamp(15px, 2.12vw, 30px);        /* diseño: "Egresados de diferentes generaciones." = 315 px */
+  font-stretch: 62%;
+  line-height: 1.15;
+  color: var(--texto-claro);
+  text-align: center;
+}
+.invitados-texto p { margin: 0 0 1.15em; }
+
+/* --- 9. Historias -------------------------------------------------------- */
+.historias-texto {
+  font-size: clamp(14px, 1.78vw, 26px);        /* diseño: 1.ª línea = 510 px */
+  font-stretch: 62%;
+  line-height: 1.2;
+  max-width: min(80vw, 1150px);
+  margin: 0 auto;
+}
+.historias-texto p { margin: 0; }
+.historias-subtitulo {
+  font-size: clamp(18px, 2.79vw, 40px);        /* diseño: 293 px */
+  font-weight: 700;
+  font-stretch: 62%;
+  color: var(--rojo-vivo);
+  margin: 1.2rem 0 0.6rem;
+}
+.seccion-historias .carrusel-wrap {           /* diseño: flechas en x 51 y 1167, tarjetas de 248 px */
+  max-width: none;
+  width: 91vw;
+  margin-top: 0.5rem;
+  margin-left: calc((100% - 91vw) / 2);
+  margin-right: calc((100% - 91vw) / 2);
+  gap: 0.94vw;
+}
+@media (max-width: 768px) {
+  .seccion-historias .carrusel-wrap { width: auto; margin-left: 0; margin-right: 0; }
+}
+.seccion-historias .carrusel-track {
+  gap: 1.17vw;                           /* diseño: 15 px */
+  flex: 1;
+}
+button.card-historia-carrusel,
+.card-historia-carrusel {
+  flex: 0 0 calc((100% - 3 * 1.17vw) / 4);
+  padding: 0.55vw 0.55vw 0.9vw;
+  text-align: center;
+  align-items: center;
+}
+.historia-titulo-item {
+  font-size: clamp(15px, 1.95vw, 28px);
+  font-weight: 700;
+  line-height: 1.05;
+  margin: 0.2em 0 0.25em;
+}
+.historia-desc-item {
+  font-size: clamp(13px, 1.66vw, 24px);        /* diseño: "Los egresados UNAULA crean" = 192 px */
+  font-stretch: 62%;
+  line-height: 1.15;
+  margin-bottom: 0.4em;
+}
+.historia-ver-mas {
+  font-size: clamp(13px, 1.62vw, 23px);        /* diseño: "CONOCE SU HISTORIA" = 156 px */
+  font-stretch: 62%;
+  text-transform: none;
+}
+.seccion-historias .carrusel-btn {              /* flecha alta y delgada del diseño: 47 × 117 px */
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 47 117'%3E%3Cpolyline points='40,5 9,58.5 40,112' fill='none' stroke='%23D7CFC3' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  border: 0;
+  border-radius: 0;
+  width: clamp(24px, 3.7vw, 53px);
+  height: clamp(60px, 9.1vw, 131px);
+  font-size: 0;
+  color: transparent;
+}
+.seccion-historias .carrusel-btn + .carrusel-track + .carrusel-btn { transform: scaleX(-1); }
+.seccion-historias .carrusel-btn:hover { opacity: 0.7; }
+@media (max-width: 1024px) {
+  button.card-historia-carrusel,
+  .card-historia-carrusel { flex-basis: calc((100% - 1.17vw) / 2); }
+}
+@media (max-width: 480px) {
+  button.card-historia-carrusel,
+  .card-historia-carrusel { flex-basis: 80%; }
+}
+
+/* --- 10. Agenda ---------------------------------------------------------- */
+.titulo-agenda {
+  font-size: clamp(24px, 3.3vw, 48px);         /* diseño: 515 px */
+  margin-bottom: 2.6vw;
+}
+.grid-agenda-6 {
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.17vw;
+  max-width: min(94vw, 1206px);         /* diseño: 6 × 186 + 5 × 15 */
+}
+.card-agenda-vidrio {
+  aspect-ratio: 186 / 254;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 12px 8px;
+}
+.agenda-hora {
+  font-size: clamp(18px, 2.2vw, 32px);
+  font-weight: 700;
+}
+.agenda-momento {
+  font-size: clamp(14px, 2.15vw, 31px);        /* diseño: "Llegada y registro" = 148 px */
+  font-weight: 400;
+  font-stretch: 62%;
+  line-height: 1.05;
+}
+
+/* --- 11. Cierre ---------------------------------------------------------- */
+.cierre-titular {
+  align-items: flex-start;
+  margin-bottom: 1.4vw;
+}
+.cierre-l1 {
+  font-size: clamp(28px, 3.92vw, 56px);        /* diseño: "Fiesta" = 104 px */
+  font-weight: 800;
+  font-stretch: 62%;
+  line-height: 0.95;
+  color: var(--texto-claro);
+}
+.cierre-l2 {
+  font-size: clamp(40px, 5.08vw, 73px);        /* diseño: "LLENA" = 148 px */
+  font-weight: 800;
+  font-stretch: 62%;
+  line-height: 0.95;
+  color: var(--texto-claro);
+  margin-left: 0.3em;
+  padding-bottom: 0.3em;
+}
+.cierre-texto {
+  font-size: clamp(13px, 1.51vw, 22px);        /* diseño: "Gracias por tanto cariño." = 145 px */
+  font-stretch: 62%;
+  line-height: 1.25;
+  color: var(--texto-claro);
+}
+.cierre-texto p { margin: 0 0 1.1em; }
+.cierre-texto__vemos { font-weight: 700; }
+.cierre-texto__lugar {
+  font-weight: 700;
+  font-size: 1.41em;
+  color: var(--dorado);
+}
+
+/* --- Celular ------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .grid-vidrio-3 { gap: 16px; }
+  .tarjeta-vidrio { aspect-ratio: auto; padding: 22px 16px; gap: 10px; }
+  .grid-videos { grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 100%; }
+  .card-video { padding: 8px 8px 0; }
+  .grid-agenda-6 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .card-agenda-vidrio { aspect-ratio: auto; min-height: 150px; }
+  .porque-texto, .historias-texto, .parrafo-encuentro { max-width: 100%; }
+  .porque-texto br, .historias-texto br, .parrafo-encuentro br { display: none; }
+}
+
+/* --- Espaciado vertical y alineación, medidos sobre el diseño a 1280 px -- */
+.hero { padding-bottom: calc(19rem + 6vw); }                 /* aire entre botones y onda */
+.hero__gracias { margin-top: clamp(40px, 9vw, 130px); line-height: 0.84; }   /* logo → titular: 126 px */
+.hero__aforo { line-height: 1.05; }
+.hero__botones { margin-top: 1.6rem; }
+
+.seccion-bienvenida { padding-bottom: clamp(68px, 8.2vw, 118px); }
+.escalones-bienvenida { align-items: flex-start; }
+.esc-l1 { line-height: 0.86; }
+.esc-l2 { line-height: 0.84; margin-left: 0.3em; }
+.esc-l3 { line-height: 0.86; }
+.bienvenida-mensaje { margin-bottom: clamp(28px, 5.5vw, 80px); }
+
+.seccion-datos { padding-top: clamp(40px, 4.1vw, 60px); padding-bottom: clamp(64px, 10vw, 145px); }
+.titulo-datos { margin-bottom: clamp(24px, 6vw, 86px); }
+.grid-vidrio-3 { margin-bottom: 1.8vw; }
+
+#por-que-nos-encontramos .contenedor-estrecho,
+#el-encuentro .contenedor-estrecho { max-width: min(88vw, 1400px); }
+#por-que-nos-encontramos .titular-bloque,
+#el-encuentro .titular-bloque,
+#quienes-estan-invitados .titular-bloque { align-items: flex-start; }
+#por-que-nos-encontramos .titular-l2,
+#el-encuentro .titular-l2 { margin-left: 0.3em; }
+#quienes-estan-invitados .titular-l2 { margin-left: 0.25em; }
+.seccion-por-que { padding-top: clamp(48px, 9.5vw, 137px); padding-bottom: clamp(48px, 9.5vw, 137px); }
+#por-que-nos-encontramos .titular-bloque { margin-bottom: 0.4rem; }
+#por-que-nos-encontramos .titular-l1 { line-height: 0.86; }
+
+.seccion-videos { padding-top: clamp(48px, 6.5vw, 94px); padding-bottom: clamp(40px, 3.4vw, 50px); }
+.seccion-videos .titular-bloque { margin-bottom: clamp(20px, 4vw, 58px); }
+
+.seccion-encuentro { padding-top: clamp(48px, 9.7vw, 140px); padding-bottom: clamp(56px, 9.2vw, 132px); }
+
+.seccion-invitados {
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(56px, 7.8vw, 112px);
+  padding-bottom: 0;
+  min-height: 58.4vw;                    /* diseño: 748 px de alto */
+}
+.seccion-invitados { text-align: center; }
+#quienes-estan-invitados .contenedor-ancho { position: static; }   /* la foto se ubica contra el borde de la sección */
+.grid-invitados-2col { grid-template-columns: 34vw 1fr; align-items: start; margin-left: -2.5vw; }
+.invitados-texto { padding-bottom: clamp(40px, 4.7vw, 68px); }
+.foto-invitados {
+  position: absolute;
+  right: -0.5vw;
+  bottom: 0;
+  width: 60.8vw;                         /* diseño: 778 px */
+  max-height: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: contain;
+}
+
+.seccion-historias { padding-bottom: clamp(32px, 3vw, 44px); }
+.seccion-historias .carrusel-wrap { margin-bottom: 0; }
+
+.seccion-agenda { padding-top: clamp(56px, 14vw, 200px); padding-bottom: clamp(56px, 14.5vw, 208px); }
+.titulo-agenda {
+  text-transform: none;
+  font-size: clamp(26px, 3.95vw, 57px);        /* diseño: "Así viviremos este encuentro" = 515 px */
+  margin-bottom: clamp(24px, 5.5vw, 80px);
+}
+
+.seccion-cierre { padding-top: clamp(64px, 11.5vw, 165px); padding-bottom: clamp(72px, 17.7vw, 255px); }
+
+@media (max-width: 768px) {
+  .seccion-invitados { min-height: 0; padding-bottom: 0; }
+  .grid-invitados-2col { grid-template-columns: 1fr; }
+  .foto-invitados { position: static; width: 100%; display: block; }
+  .seccion-datos { padding-bottom: 56px; }
+  .seccion-agenda, .seccion-cierre { padding-top: 56px; padding-bottom: 64px; }
+}
+/* ===== FIN CAMBIO 30-SEP-B ===== */

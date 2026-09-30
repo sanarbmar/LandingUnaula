@@ -35,11 +35,18 @@ const CONFIG = {
  * ========================================================================
  */
 const HISTORIAS = [
+  /* ===== CAMBIO 30-SEP-B: la primera historia antes era
+     "Cuando servir se convierte en legado" / "UNAULA forma líderes
+     comprometidos con el…". `enlace` es opcional: si no está, la
+     tarjeta dice "ver mas". `miniatura` también es opcional: es la foto
+     recortada que se ve en la tarjeta; la ventana usa `imagen`. ===== */
   {
-    titulo: "Cuando servir se convierte en legado",
-    resumen: "UNAULA forma líderes comprometidos con el…",
+    titulo: "Jeison Correa",
+    resumen: "Egresado de la Licenciatura en Ciencias Sociales – UNAULA <br>Docente del magisterio que…",
     cuerpo: "[HISTORIA COMPLETA PENDIENTE]",
-    imagen: "assets/img/foto-celebrar-1-historia.jpg"
+    imagen: "assets/img/historia-jeison-correa.jpg",
+    miniatura: "assets/img/historia-jeison-correa-tarjeta.jpg",
+    enlace: "CONOCE SU HISTORIA"
   },
   {
     titulo: "Construir empresa, construir país",
@@ -60,6 +67,23 @@ const HISTORIAS = [
     imagen: "assets/img/foto-celebrar-1-historia.jpg"
   }
 ];
+
+/* ===== INICIO CAMBIO 30-SEP-B: VIDEOS ====================================
+   Los cuatro videos de la sección "60 años. Miles de historias.".
+   En `youtube` se pega el enlace del video tal como lo da YouTube
+   (sirve youtube.com/watch?v=..., youtu.be/..., youtube.com/shorts/...)
+   o solo su código. Mientras esté vacío, la tarjeta muestra la foto de
+   `portada` (la misma del diseño de Canva) y el botón no hace nada.
+   YouTube solo se carga cuando la persona hace clic en el video: antes
+   se muestra la miniatura, así la página no se vuelve pesada.
+   ========================================================================= */
+const VIDEOS = [
+  { youtube: "", titulo: "Video 1", portada: "assets/img/video-portada.jpg" },
+  { youtube: "", titulo: "Video 2", portada: "assets/img/video-portada.jpg" },
+  { youtube: "", titulo: "Video 3", portada: "assets/img/video-portada.jpg" },
+  { youtube: "", titulo: "Video 4", portada: "assets/img/video-portada.jpg" }
+];
+/* ===== FIN CAMBIO 30-SEP-B: VIDEOS ===== */
 
 /**
  * ========================================================================
@@ -183,15 +207,61 @@ function renderizarHistorias() {
   const track = document.getElementById("carrusel-historias");
   if (!track || !Array.isArray(HISTORIAS)) return;
   const fotoGenerica = "assets/img/foto-celebrar-1-historia.jpg";
+  /* CAMBIO 30-SEP-B: texto del enlace configurable (h.enlace) y foto de
+     respaldo si la imagen de la historia todavía no está en el servidor. */
   track.innerHTML = HISTORIAS.map((h, i) => `
     <button type="button" class="card-historia-carrusel" onclick="abrirModalHistoria(${i})" aria-haspopup="dialog" aria-label="Abrir historia: ${h.titulo}">
-      <img src="${h.imagen || fotoGenerica}" alt="${h.titulo}" class="foto-historia-item" loading="lazy">
+      <img src="${h.miniatura || h.imagen || fotoGenerica}" alt="${h.titulo}" class="foto-historia-item" loading="lazy" onerror="this.onerror=null;this.src='${fotoGenerica}'">
       <div class="historia-titulo-item">${h.titulo}</div>
       <div class="historia-desc-item">${h.resumen}</div>
-      <span class="historia-ver-mas">ver mas</span>
+      <span class="historia-ver-mas">${h.enlace || "ver mas"}</span>
     </button>
   `).join("");
 }
+
+/* ===== INICIO CAMBIO 30-SEP-B: VIDEOS ===== */
+function idYoutube(valor) {
+  const v = (valor || "").trim();
+  if (!v) return "";
+  if (/^[\w-]{11}$/.test(v)) return v;
+  const m = v.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/|\/live\/)([\w-]{11})/);
+  return m ? m[1] : "";
+}
+
+function renderizarVideos() {
+  const grid = document.getElementById("grid-videos");
+  if (!grid || !Array.isArray(VIDEOS)) return;
+  grid.innerHTML = VIDEOS.map((v, i) => {
+    const id = idYoutube(v.youtube);
+    const portada = id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : (v.portada || "");
+    return `
+    <div class="card-video">
+      <button type="button" class="card-video__media" data-video="${id}" aria-label="Ver video: ${v.titulo}" ${id ? "" : "disabled"}>
+        ${portada ? `<img src="${portada}" alt="" loading="lazy">` : ""}
+        <span class="card-video__play" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="card-video__ver" data-indice="${i}" ${id ? "" : "disabled"}>Ver Video</button>
+    </div>`;
+  }).join("");
+
+  grid.addEventListener("click", (e) => {
+    const boton = e.target.closest(".card-video__media, .card-video__ver");
+    if (!boton || boton.disabled) return;
+    const tarjeta = boton.closest(".card-video");
+    const media = tarjeta.querySelector(".card-video__media");
+    if (!media) return;               /* el video ya se está reproduciendo */
+    const id = media.dataset.video;
+    if (!id) return;
+    const marco = document.createElement("iframe");
+    marco.className = "card-video__iframe";
+    marco.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
+    marco.title = media.getAttribute("aria-label");
+    marco.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    marco.allowFullscreen = true;
+    media.replaceWith(marco);
+  });
+}
+/* ===== FIN CAMBIO 30-SEP-B: VIDEOS ===== */
 
 function renderizarAgenda() {
   const grid = document.getElementById("grid-agenda");
@@ -264,4 +334,5 @@ document.addEventListener("DOMContentLoaded", () => {
   inicializarModalHistorias();
   renderizarHistorias();
   renderizarAgenda();
+  renderizarVideos();   /* CAMBIO 30-SEP-B */
 });

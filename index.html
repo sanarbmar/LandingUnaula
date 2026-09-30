@@ -2,6 +2,36 @@
 <html lang="es">
 <head>
   <!-- =====================================================================
+       CAMBIOS 30-SEP-B — ACTUALIZACIÓN AL DISEÑO NUEVO DE CANVA
+
+       La página se ajustó al diseño nuevo ("LANDING PAGE" en Canva),
+       conservando los botones actuales, las preguntas frecuentes y el pie.
+       Busca  CAMBIO 30-SEP-B  para saltar a cada bloque.
+
+       #1  Barra superior: el enlace "Qué celebraremos" pasa a "Videos".
+       #2  Hero: texto del aforo en dos líneas, con punto final.
+       #3  Bienvenida: el párrafo y CONOCE EL ENCUENTRO se reemplazan por el
+           mensaje de aforo y los botones CONFIRMAR ASISTENCIA / LIBERAR CUPO.
+       #4  Datos del evento: sin etiquetas; fecha y lugar como en el diseño.
+       #5  ¿Por qué nos encontramos?: texto centrado línea por línea.
+       #6  "60 años. Miles de historias.": las 4 tarjetas pasan a ser 4
+           videos de YouTube (se cargan solo al hacer clic).
+       #7  El Encuentro: texto por párrafos con frases en negrita.
+       #8  Invitados: titular en minúscula, lista centrada sin viñetas.
+       #9  Historias de éxito: titular en minúscula, párrafo por líneas y
+           subtítulo CONOCE LAS HISTORIAS. Primera historia: Jeison Correa.
+       #10 Agenda: seis tarjetas en una fila; se quita el aviso preliminar.
+       #11 Cierre: "Fiesta" pequeño y "LLENA" grande; textos del diseño.
+
+       SÍ hay cambios en assets/css/estilos.css (bloque CAMBIO 30-SEP-B al
+       final) y en assets/js/main.js (arreglo VIDEOS, historia de Jeison
+       Correa y funciones de los videos).
+       Imágenes nuevas (van en assets/img/):
+         foto-invitados-recorte.webp, historia-jeison-correa.jpg,
+         historia-jeison-correa-tarjeta.jpg, video-portada.jpg
+       ===================================================================== -->
+
+  <!-- =====================================================================
        CAMBIOS DEL 30 DE SEPTIEMBRE DE 2026 — AFORO COMPLETO
 
        Este archivo trae 6 bloques nuevos respecto a la versión anterior.
@@ -87,7 +117,11 @@
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#el-encuentro" class="nav-enlace">El Encuentro</a>
-        <a href="#que-vamos-a-celebrar" class="nav-enlace">Qué celebraremos</a>
+        <!-- ===== INICIO CAMBIO 30-SEP-B #1 ==============================
+     Reemplaza el enlace anterior, que decía:  Qué celebraremos
+     ========================================================= -->
+        <a href="#que-vamos-a-celebrar" class="nav-enlace">Videos</a>
+        <!-- ===== FIN CAMBIO 30-SEP-B #1 ===== -->
         <a href="#sec-agenda" class="nav-enlace">Agenda</a>
         <a href="#faq" class="nav-enlace">Preguntas</a>
         <!-- ===== INICIO CAMBIO 30-SEP #1 ==============================
@@ -132,8 +166,10 @@
            Estilos: clases hero__gracias, hero__aforo y hero__botones,
            al final de assets/css/estilos.css.
            ========================================================= -->
-      <h1 class="hero__gracias">Gracias por hacer de este reencuentro algo tan especial</h1>
-      <p class="hero__aforo">El aforo ya está completo y ahora queremos saber si contamos contigo</p>
+      <!-- CAMBIO 30-SEP-B #2: salto de línea después de "este", como en el diseño -->
+      <h1 class="hero__gracias">Gracias por hacer de este <br>reencuentro algo tan especial</h1>
+      <!-- CAMBIO 30-SEP-B #2: el texto va en dos líneas y con punto final -->
+      <p class="hero__aforo">El aforo ya está completo y ahora <br>queremos saber si contamos contigo.</p>
       <div class="hero__botones">
         <a href="#confirmar" class="btn btn-primario" onclick="irAInscripcion(event)">
           CONFIRMAR ASISTENCIA
@@ -163,22 +199,26 @@
         <span class="esc-l3"><span class="trazo-fin trazo-fin-dorado">HISTORIA</span></span>
       </div>
 
-      <p class="parrafo-bienvenida">
-        UNAULA cumple 60 años y queremos celebrarlo contigo. Después de seis décadas formando profesionales, acompañando proyectos de vida y aportando a la transformación de la sociedad, llegó el momento de volver a encontrarnos con quienes también hacen parte de esta historia.
+      <!-- ===== INICIO CAMBIO 30-SEP-B #3 ==============================
+     Reemplaza el párrafo y el botón anteriores:
+       Párrafo: "UNAULA cumple 60 años y queremos celebrarlo contigo. Después
+                de seis décadas formando profesionales, (...)"
+       Botón:   CONOCE EL ENCUENTRO
+     ========================================================= -->
+      <p class="bienvenida-mensaje">
+        Gracias por hacer de este reencuentro algo tan especial<br>
+        El aforo ya está completo y ahora queremos saber si contamos contigo.
       </p>
 
       <div class="bienvenida-botones">
-        <!-- ===== INICIO CAMBIO 30-SEP #4 ==============================
-             Se quitó el botón QUIERO INSCRIBIRME que iba aquí:
-               <a href="#inscripcion" class="btn btn-crema-rojo"
-                  onclick="irAInscripcion(event)">QUIERO INSCRIBIRME</a>
-             Queda solo CONOCE EL ENCUENTRO.
-             ========================================================= -->
-        <!-- ===== FIN CAMBIO 30-SEP #4 ===== -->
-        <a href="#el-encuentro" class="btn btn-borde-dorado">
-          CONOCE EL ENCUENTRO
+        <a href="#confirmar" class="btn btn-crema-rojo" onclick="irAInscripcion(event)">
+          CONFIRMAR ASISTENCIA
+        </a>
+        <a href="#liberar-cupo" class="btn btn-borde-dorado" onclick="irALiberarCupo(event)">
+          LIBERAR CUPO
         </a>
       </div>
+      <!-- ===== FIN CAMBIO 30-SEP-B #3 ===== -->
     </div>
   </section>
 
@@ -200,8 +240,8 @@
               <line x1="3" y1="10" x2="21" y2="10"></line>
             </svg>
           </div>
-          <div class="vidrio-label">Fecha</div>
-          <div class="vidrio-valor">Viernes 6 de noviembre de 2026</div>
+          <!-- CAMBIO 30-SEP-B #4: sin etiqueta "Fecha"; antes decía "Viernes 6 de noviembre de 2026" -->
+          <div class="vidrio-valor">6 de noviembre de 2026</div>
         </div>
 
         <!-- Lugar -->
@@ -212,8 +252,8 @@
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
           </div>
-          <div class="vidrio-label">Lugar</div>
-          <div class="vidrio-valor">Plaza Mayor Medellín — Pabellón Verde</div>
+          <!-- CAMBIO 30-SEP-B #4: sin etiqueta "Lugar"; antes decía "Plaza Mayor Medellín — Pabellón Verde" -->
+          <div class="vidrio-valor">Plaza Mayor Medellín <br>PABELLÓN VERDE</div>
         </div>
 
         <!-- Horario -->
@@ -224,7 +264,7 @@
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
           </div>
-          <div class="vidrio-label">Horario</div>
+          <!-- CAMBIO 30-SEP-B #4: sin etiqueta "Horario"; la hora real se conserva -->
           <!-- ===== INICIO CAMBIO 16-SEP #1 =====================================
                Reemplaza el texto anterior, que decía:
                    Hora de inicio<br>
@@ -257,27 +297,20 @@
 
       <div class="subtitulo-dorado con-trazo">Volver también es recordar quiénes <span class="trazo-fin trazo-fin-rojo">somos</span></div>
 
-      <div class="versos-bloque">
-        <span>Hay lugares a los que uno vuelve y reconoce inmediatamente.</span>
-        <span class="verso-sep">·</span>
-        <span>Una conversación.</span>
-        <span class="verso-sep">·</span>
-        <span>Un profesor.</span>
-        <span class="verso-sep">·</span>
-        <span>Un amigo.</span>
-        <span class="verso-sep">·</span>
-        <span>Un pasillo.</span>
-        <span class="verso-sep">·</span>
-        <span>Una historia.</span>
+      <!-- ===== INICIO CAMBIO 30-SEP-B #5 ==============================
+     Reemplaza los versos con separadores, el párrafo y el recuadro
+     "Porque no se trata solamente..." por un solo bloque centrado,
+     línea por línea, como en el diseño. El texto no cambia.
+     ========================================================= -->
+      <div class="porque-texto">
+        <p>Hay lugares a los que uno vuelve y reconoce inmediatamente.</p>
+        <p><strong>• Una conversación. • Un profesor. • Un amigo. • Un pasillo. • Una historia.</strong></p>
+        <p>Durante 60 años, miles de personas han pasado por UNAULA y han llevado consigo parte de esta Universidad.</p>
+        <p>Hoy queremos volver a encontrarnos para celebrar esas historias, reconocer nuestros caminos y recordar que, aunque hayan pasado los años, <strong>seguimos siendo parte de una misma comunidad.</strong></p>
+        <p>Porque no se trata solamente de haber estudiado en UNAULA.</p>
+        <p class="porque-remate">Se trata de seguir haciendo parte de UNAULA.</p>
       </div>
-
-      <p class="parrafo-comun">
-        Durante 60 años, miles de personas han pasado por UNAULA y han llevado consigo parte de esta Universidad. Hoy queremos volver a encontrarnos para celebrar esas historias, reconocer nuestros caminos y recordar que, aunque hayan pasado los años, seguimos siendo parte de una misma comunidad.
-      </p>
-
-      <div class="cierre-por-que">
-        Porque no se trata solamente de haber estudiado en UNAULA. Se trata de seguir haciendo parte de UNAULA.
-      </div>
+      <!-- ===== FIN CAMBIO 30-SEP-B #5 ===== -->
     </div>
   </section>
 
@@ -285,52 +318,25 @@
   <!-- ========================================================================
        SECCIÓN 5 — ¿QUÉ VAMOS A CELEBRAR?
        ======================================================================== -->
-  <section class="seccion-celebrar" id="que-vamos-a-celebrar" aria-label="¿Qué vamos a celebrar?">
+  <section class="seccion-celebrar seccion-videos" id="que-vamos-a-celebrar" aria-label="60 años. Miles de historias.">
     <div class="contenedor-ancho">
-      <div class="titular-bloque">
-        <span class="titular-l1" style="color: var(--texto-claro);">60 años. Miles de historias.</span>
-        <span class="titular-l2" style="color: var(--texto-claro);">Un mismo orgullo.</span>
+      <!-- ===== INICIO CAMBIO 30-SEP-B #6 ==============================
+     Reemplaza todo el contenido anterior de la sección:
+       Titular:    60 años. Miles de historias. / Un mismo orgullo.
+       Subtítulo:  En este encuentro celebraremos:
+       Tarjetas:   Nuestra historia, Nuestros egresados, Nuestro legado y
+                   Nuestro futuro, con foto y texto.
+     Ahora son cuatro videos de YouTube. Los genera renderizarVideos() a
+     partir del arreglo VIDEOS, al inicio de assets/js/main.js: ahí se
+     pega el enlace de cada video. YouTube solo se carga cuando la persona
+     hace clic, para no volver pesada la página.
+     ========================================================= -->
+      <div class="titular-bloque con-trazo">
+        <span class="titular-l1 videos-titulo" style="color: var(--texto-claro);">60 años. Miles de <span class="trazo-fin trazo-fin-dorado">historias.</span></span>
       </div>
 
-      <div class="subtitulo-dorado con-trazo">En este encuentro <span class="trazo-fin trazo-fin-crema">celebraremos:</span></div>
-
-      <div class="grid-celebrar-4">
-        <!-- 1: Nuestra historia -->
-        <div class="card-celebrar-rojo">
-          <img src="assets/img/foto-celebrar-1-historia.jpg" alt="Historia institucional UNAULA" class="img-card-celebrar" loading="lazy">
-          <div class="card-celebrar-cuerpo">
-            <h3 class="card-celebrar-titulo">Nuestra historia</h3>
-            <p class="card-celebrar-desc">Seis décadas de aprendizajes, decisiones, sueños y transformaciones.</p>
-          </div>
-        </div>
-
-        <!-- 2: Nuestros egresados -->
-        <div class="card-celebrar-rojo">
-          <img src="assets/img/foto-celebrar-2-egresados.jpg" alt="Egresados de UNAULA" class="img-card-celebrar" loading="lazy">
-          <div class="card-celebrar-cuerpo">
-            <h3 class="card-celebrar-titulo">Nuestros egresados</h3>
-            <p class="card-celebrar-desc">Las personas que han llevado el espíritu unaulista a diferentes lugares y escenarios de la sociedad.</p>
-          </div>
-        </div>
-
-        <!-- 3: Nuestro legado -->
-        <div class="card-celebrar-rojo">
-          <img src="assets/img/foto-celebrar-3-legado.jpg" alt="Legado en la sociedad" class="img-card-celebrar" loading="lazy">
-          <div class="card-celebrar-cuerpo">
-            <h3 class="card-celebrar-titulo">Nuestro legado</h3>
-            <p class="card-celebrar-desc">Todo aquello que permanece en las personas, las familias, las comunidades y las organizaciones.</p>
-          </div>
-        </div>
-
-        <!-- 4: Nuestro futuro -->
-        <div class="card-celebrar-rojo">
-          <img src="assets/img/foto-celebrar-4-futuro.jpg" alt="Construcción del futuro" class="img-card-celebrar" loading="lazy">
-          <div class="card-celebrar-cuerpo">
-            <h3 class="card-celebrar-titulo">Nuestro futuro</h3>
-            <p class="card-celebrar-desc">Porque cumplir 60 años no significa mirar únicamente hacia atrás. Significa tener la experiencia para seguir construyendo.</p>
-          </div>
-        </div>
-      </div>
+      <div class="grid-videos" id="grid-videos"></div>
+      <!-- ===== FIN CAMBIO 30-SEP-B #6 ===== -->
     </div>
   </section>
 
@@ -345,9 +351,17 @@
         <span class="titular-l2" style="color: var(--rojo-vivo);">SENTIRNOS <span class="trazo-fin trazo-fin-rojo">PARTE</span></span>
       </div>
 
-      <p class="parrafo-encuentro">
-        El Encuentro de Egresados será uno de los grandes momentos de la celebración de los 60 años de UNAULA. Será mucho más que una fiesta. Será un espacio para reencontrarnos, reconocernos, celebrar nuestros logros y fortalecer los vínculos que nos unen con la Universidad y con las generaciones que han hecho parte de ella. Queremos que cada egresado llegue con una historia y se vaya con nuevas razones para seguir conectado con UNAULA. El encuentro está concebido como ese momento en el que la historia de la Universidad se encuentra con las personas que la hicieron posible.
-      </p>
+      <!-- ===== INICIO CAMBIO 30-SEP-B #7 ==============================
+     Reemplaza el párrafo corrido por párrafos separados con frases en
+     negrita, como en el diseño. El texto no cambia.
+     ========================================================= -->
+      <div class="parrafo-encuentro">
+        <p>El Encuentro de Egresados será uno de los grandes momentos de la <br>celebración de los 60 años de UNAULA.</p>
+        <p><strong>Será mucho más que una fiesta.</strong></p>
+        <p>Será un espacio para reencontrarnos, <strong>reconocernos, celebrar nuestros logros y fortalecer los vínculos que nos unen con la Universidad y con las generaciones que han hecho parte de ella.</strong></p>
+        <p>Queremos que cada egresado llegue con una historia y se vaya con nuevas razones para seguir conectado con UNAULA. <br>El encuentro está concebido como ese momento en el que <strong>la historia de la Universidad se encuentra con las personas que la hicieron posible.</strong></p>
+      </div>
+      <!-- ===== FIN CAMBIO 30-SEP-B #7 ===== -->
     </div>
   </section>
 
@@ -359,27 +373,32 @@
     <div class="contenedor-ancho">
       <div class="titular-bloque con-trazo">
         <span class="titular-l1" style="color: var(--texto-claro);">Si alguna vez hiciste parte de UNAULA,</span>
-        <span class="titular-l2" style="color: var(--texto-claro);">esta celebración también es <span class="trazo-fin trazo-fin-dorado">tuya.</span></span>
+        <!-- CAMBIO 30-SEP-B #8: esta línea ya no va en mayúsculas (clase titular-l2--natural) -->
+        <span class="titular-l2 titular-l2--natural" style="color: var(--texto-claro);">esta celebración también es <span class="trazo-fin trazo-fin-dorado">tuya.</span></span>
       </div>
 
       <div class="grid-invitados-2col">
         <div>
-          <p class="parrafo-comun" style="color: var(--texto-claro); text-align: left;">
-            Invitamos a nuestros egresados de las diferentes generaciones, programas y facultades. Queremos reunir una comunidad diversa:
-          </p>
-
-          <div class="lista-invitados">
-            <div class="item-invitado"><div class="viñeta-dorada"></div><span>Egresados de diferentes generaciones.</span></div>
-            <div class="item-invitado"><div class="viñeta-dorada"></div><span>Profesionales de diferentes áreas.</span></div>
-            <div class="item-invitado"><div class="viñeta-dorada"></div><span>Egresados que viven en Medellín y el Valle de Aburrá.</span></div>
-            <div class="item-invitado"><div class="viñeta-dorada"></div><span>Egresados que hoy están en otras ciudades o países.</span></div>
-            <div class="item-invitado"><div class="viñeta-dorada"></div><span>Emprendedores, investigadores, líderes sociales, empresarios, académicos y profesionales.</span></div>
-            <div class="item-invitado"><div class="viñeta-dorada"></div><span>Y, sobre todo, personas que quieran volver a encontrarse con la Universidad.</span></div>
+          <!-- ===== INICIO CAMBIO 30-SEP-B #8 ==============================
+     Reemplaza el párrafo y la lista con viñetas por un texto centrado
+     sin viñetas, como en el diseño. El texto no cambia.
+     ========================================================= -->
+          <div class="invitados-texto">
+            <p>Invitamos a nuestros egresados de las diferentes <br>generaciones, programas y facultades.</p>
+            <p><strong>Queremos reunir una comunidad diversa:</strong><br>
+              Egresados de diferentes generaciones.<br>
+              Profesionales de diferentes áreas.<br>
+              Egresados que viven en Medellín y el Valle de Aburrá.<br>
+              Egresados que hoy están en otras ciudades o países.<br>
+              Emprendedores, investigadores, líderes sociales, <br>empresarios, académicos y profesionales.<br>
+              Y, sobre todo, personas que quieran volver a <br>encontrarse con la Universidad.</p>
           </div>
+          <!-- ===== FIN CAMBIO 30-SEP-B #8 ===== -->
         </div>
 
         <div>
-          <img src="assets/img/foto-invitados.jpg" alt="Comunidad de egresados de UNAULA" class="foto-invitados" loading="lazy">
+          <!-- CAMBIO 30-SEP-B #8: la foto ahora es un recorte sin fondo (foto-invitados-recorte.webp, imagen nueva), como en el diseño. Antes: foto-invitados.jpg -->
+          <img src="assets/img/foto-invitados-recorte.webp" alt="Comunidad de egresados de UNAULA" class="foto-invitados" loading="lazy">
         </div>
       </div>
     </div>
@@ -393,23 +412,36 @@
     <div class="contenedor-ancho">
       <div class="titular-bloque con-trazo">
         <span class="titular-l1" style="color: var(--rojo-vivo);">Detrás de cada historia de éxito</span>
-        <span class="titular-l2" style="color: var(--rojo-vivo);">hay una historia de <span class="trazo-fin trazo-fin-rojo">UNAULA</span></span>
+        <!-- CAMBIO 30-SEP-B #9: esta línea ya no va en mayúsculas (clase titular-l2--natural) -->
+        <span class="titular-l2 titular-l2--natural" style="color: var(--rojo-vivo);">hay una historia de <span class="trazo-fin trazo-fin-rojo">UNAULA</span></span>
       </div>
 
-      <p class="parrafo-comun">
-        Nuestros egresados son la expresión viva del legado de la Universidad. Durante la celebración conoceremos historias de personas que han generado impacto desde diferentes campos: liderazgo, emprendimiento, sector público, empresa, academia, cultura, investigación y transformación social. Porque para UNAULA el éxito no se mide solamente por el reconocimiento profesional. También se mide por la capacidad de transformar vidas y aportar a la sociedad.
-      </p>
+      <!-- ===== INICIO CAMBIO 30-SEP-B #9 ==============================
+     Reemplaza el párrafo corrido por líneas separadas (la última en
+     negrita) y agrega el subtítulo CONOCE LAS HISTORIAS. Las tarjetas
+     las genera renderizarHistorias() desde el arreglo HISTORIAS de
+     main.js: la primera ahora es Jeison Correa.
+     ========================================================= -->
+      <div class="historias-texto">
+        <p>Nuestros egresados son la expresión viva del legado de la Universidad.<br>
+          Durante la celebración conoceremos historias de personas que han generado impacto desde diferentes campos:<br>
+          liderazgo, emprendimiento, sector público, empresa, academia, cultura, investigación y transformación social.<br>
+          Porque para UNAULA el éxito no se mide solamente por el reconocimiento profesional.<br>
+          <strong>También se mide por la capacidad de transformar vidas y aportar a la sociedad.</strong></p>
+      </div>
+      <h3 class="historias-subtitulo">CONOCE LAS HISTORIAS</h3>
+      <!-- ===== FIN CAMBIO 30-SEP-B #9 ===== -->
 
       <div class="carrusel-wrap">
         <button type="button" class="carrusel-btn" onclick="scrollHistorias(-1)" aria-label="Ver historias anteriores">‹</button>
 
         <div class="carrusel-track" id="carrusel-historias">
-          <!-- Tarjeta 1 -->
-          <button type="button" class="card-historia-carrusel" onclick="abrirModalHistoria(0)" aria-haspopup="dialog" aria-label="Abrir historia: Cuando servir se convierte en legado">
-            <img src="assets/img/foto-celebrar-1-historia.jpg" alt="Cuando servir se convierte en legado" class="foto-historia-item" loading="lazy">
-            <div class="historia-titulo-item">Cuando servir se convierte en legado</div>
-            <div class="historia-desc-item">UNAULA forma líderes comprometidos con el…</div>
-            <span class="historia-ver-mas">ver mas</span>
+          <!-- Tarjeta 1 — CAMBIO 30-SEP-B #9: antes "Cuando servir se convierte en legado" -->
+          <button type="button" class="card-historia-carrusel" onclick="abrirModalHistoria(0)" aria-haspopup="dialog" aria-label="Abrir historia: Jeison Correa">
+            <img src="assets/img/historia-jeison-correa-tarjeta.jpg" alt="Jeison Correa" class="foto-historia-item" loading="lazy">
+            <div class="historia-titulo-item">Jeison Correa</div>
+            <div class="historia-desc-item">Egresado de la Licenciatura en Ciencias Sociales – UNAULA <br>Docente del magisterio que…</div>
+            <span class="historia-ver-mas">CONOCE SU HISTORIA</span>
           </button>
 
           <!-- Tarjeta 2 -->
@@ -447,8 +479,14 @@
        ======================================================================== -->
   <section class="seccion-agenda" id="sec-agenda" aria-label="Agenda del encuentro">
     <div class="contenedor-ancho">
-      <h2 class="titulo-datos" style="margin-bottom: 12px;">Así viviremos este encuentro</h2>
-      <p class="aviso-preliminar-agenda">Agenda preliminar. Sujeta a confirmación por parte de la producción del evento.</p>
+      <!-- ===== INICIO CAMBIO 30-SEP-B #10 ==============================
+     Se quitó el aviso que iba debajo del titular:
+       "Agenda preliminar. Sujeta a confirmación por parte de la
+       producción del evento."
+     Las seis tarjetas ahora van en una sola fila (estilos en el CSS).
+     ========================================================= -->
+      <h2 class="titulo-datos titulo-agenda">Así viviremos este encuentro</h2>
+      <!-- ===== FIN CAMBIO 30-SEP-B #10 ===== -->
 
       <!-- Las tarjetas las genera renderizarAgenda() a partir del arreglo AGENDA,
            al inicio de assets/js/main.js. Editar aquí no sirve: el JavaScript
@@ -546,33 +584,25 @@
        ======================================================================== -->
   <section class="seccion-cierre" aria-label="Cierre">
     <div class="contenedor-estrecho">
-      <!-- ===== INICIO CAMBIO 30-SEP #6 ==============================
-           Reemplaza el titular, los versos y el botón anteriores:
-             Titular:  Reserva tu LUGAR
-             Versos:   60 años se cuentan en décadas. / Pero también se
-                       cuentan en personas. / En quienes llegaron con un
-                       sueño. / En quienes encontraron una oportunidad. /
-                       En quienes se graduaron. / En quienes transformaron
-                       su comunidad. / En quienes llevaron el nombre de
-                       UNAULA a otros lugares.
-             Llamado:  Ahora queremos volver a encontrarnos contigo.
-             Dorado:   6 DE NOVIEMBRE · PLAZA MAYOR MEDELLÍN
-             Botón:    QUIERO INSCRIBIRME (se quitó)
-           ========================================================= -->
-      <div class="titular-bloque con-trazo">
-        <span class="titular-l1" style="color: var(--texto-claro);">FIESTA</span>
-        <span class="titular-l2" style="color: var(--texto-claro); font-size: 3.25rem;"><span class="trazo-fin trazo-fin-dorado">LLENA</span></span>
+      <!-- ===== INICIO CAMBIO 30-SEP-B #11 ==============================
+     Reemplaza el bloque del 30-SEP #6. Antes:
+       Titular:  FIESTA (grande) / LLENA (pequeño)
+       Dorado:   PLAZA MAYOR MEDELLÍN
+     Ahora "Fiesta" va pequeño y "LLENA" grande, los textos van en una
+     columna angosta y el lugar va en minúsculas, como en el diseño.
+     ========================================================= -->
+      <div class="titular-bloque con-trazo cierre-titular">
+        <span class="cierre-l1">Fiesta</span>
+        <span class="cierre-l2"><span class="trazo-fin trazo-fin-dorado">LLENA</span></span>
       </div>
 
-      <div class="versos-cierre">
-        <div class="verso-cierre-item">Gracias por tanto cariño.</div>
-        <div class="verso-cierre-item">Nos emociona ver cómo esta comunidad se movió para encontrarse de nuevo.</div>
-        <div class="verso-cierre-item">Los queremos mucho.</div>
+      <div class="cierre-texto">
+        <p>Gracias por tanto cariño. <br>Nos emociona ver cómo esta comunidad se <br>movió para encontrarse de nuevo.</p>
+        <p>Los queremos mucho.</p>
+        <p class="cierre-texto__vemos">Nos vemos el 6 de noviembre</p>
+        <p class="cierre-texto__lugar">Plaza Mayor Medellín</p>
       </div>
-
-      <div class="cierre-llamado">Nos vemos el 6 de noviembre</div>
-      <div class="cierre-destacado-dorado">PLAZA MAYOR MEDELLÍN</div>
-      <!-- ===== FIN CAMBIO 30-SEP #6 ===== -->
+      <!-- ===== FIN CAMBIO 30-SEP-B #11 ===== -->
     </div>
   </section>
 
@@ -653,4 +683,4 @@
        ======================================================================== -->
   <script src="assets/js/main.js" defer></script>
 </body>
-</html>
+</html>
