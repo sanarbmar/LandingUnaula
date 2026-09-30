@@ -2,6 +2,34 @@
 <html lang="es">
 <head>
   <!-- =====================================================================
+       CAMBIOS DEL 30 DE SEPTIEMBRE DE 2026 — AFORO COMPLETO
+
+       Este archivo trae 6 bloques nuevos respecto a la versión anterior.
+       Busca el texto  CAMBIO 30-SEP  para saltar a cada uno: están
+       delimitados por comentarios INICIO / FIN.
+
+       CAMBIO 30-SEP #1 — Barra superior. El botón INSCRIBIRME pasa a
+                          decir CONFIRMAR ASISTENCIA.
+       CAMBIO 30-SEP #2 — Barra fija inferior. INSCRÍBETE se reemplaza por
+                          dos botones: CONFIRMAR ASISTENCIA y LIBERAR CUPO.
+       CAMBIO 30-SEP #3 — Sección 1, Hero. Debajo del logo: mensaje de
+                          agradecimiento, aviso de aforo completo y los
+                          botones CONFIRMAR ASISTENCIA y LIBERAR CUPO.
+       CAMBIO 30-SEP #4 — Sección 2, Bienvenida. Se quita el botón
+                          QUIERO INSCRIBIRME.
+       CAMBIO 30-SEP #5 — Preguntas frecuentes. Dos preguntas nuevas:
+                          cómo liberar el cupo y qué es la lista de espera.
+       CAMBIO 30-SEP #6 — Sección 13, Cierre emocional. "Reserva tu LUGAR"
+                          pasa a "FIESTA LLENA", texto nuevo y se quita el
+                          botón QUIERO INSCRIBIRME.
+
+       SÍ hay cambios en assets/css/estilos.css (bloque CAMBIO 30-SEP al
+       final: estilos del hero y del botón secundario de la barra fija) y en
+       assets/js/main.js (nueva constante URL_LIBERAR_CUPO al inicio y la
+       función irALiberarCupo). Hay que reemplazar los tres archivos.
+       ===================================================================== -->
+
+  <!-- =====================================================================
        CAMBIOS DEL 16 DE SEPTIEMBRE DE 2026
 
        Este archivo trae 2 bloques nuevos respecto a la versión anterior.
@@ -62,7 +90,11 @@
         <a href="#que-vamos-a-celebrar" class="nav-enlace">Qué celebraremos</a>
         <a href="#sec-agenda" class="nav-enlace">Agenda</a>
         <a href="#faq" class="nav-enlace">Preguntas</a>
-        <a href="#inscripcion" class="btn btn-primario" onclick="irAInscripcion(event)">INSCRIBIRME</a>
+        <!-- ===== INICIO CAMBIO 30-SEP #1 ==============================
+             Reemplaza el botón anterior, que decía:  INSCRIBIRME
+             ========================================================= -->
+        <a href="#confirmar" class="btn btn-primario" onclick="irAInscripcion(event)">CONFIRMAR ASISTENCIA</a>
+        <!-- ===== FIN CAMBIO 30-SEP #1 ===== -->
       </nav>
     </div>
   </header>
@@ -70,9 +102,16 @@
   <!-- BARRA FIJA CON EL LLAMADO A LA ACCIÓN -->
   <aside class="barra-fija" id="barra-fija" aria-label="Acciones rápidas del evento">
     <div class="barra-fija-inner">
-      <a href="#inscripcion" class="barra-btn barra-btn-primario" onclick="irAInscripcion(event)">
-        INSCRÍBETE
+      <!-- ===== INICIO CAMBIO 30-SEP #2 ==============================
+           Reemplaza el botón anterior, que decía:  INSCRÍBETE
+           ========================================================= -->
+      <a href="#confirmar" class="barra-btn barra-btn-primario" onclick="irAInscripcion(event)">
+        CONFIRMAR ASISTENCIA
       </a>
+      <a href="#liberar-cupo" class="barra-btn barra-btn-secundario" onclick="irALiberarCupo(event)">
+        LIBERAR CUPO
+      </a>
+      <!-- ===== FIN CAMBIO 30-SEP #2 ===== -->
     </div>
   </aside>
 
@@ -87,6 +126,23 @@
       <img class="hero__logo" src="assets/img/logo-unaula-60.png"
            alt="UNAULA · 60 años 1966-2026">
       <!-- <h1 class="hero__titulo">&ldquo;60&nbsp;años&rdquo;.</h1> -->
+
+      <!-- ===== INICIO CAMBIO 30-SEP #3 ==============================
+           Bloque nuevo debajo del logo. Antes aquí no había texto.
+           Estilos: clases hero__gracias, hero__aforo y hero__botones,
+           al final de assets/css/estilos.css.
+           ========================================================= -->
+      <h1 class="hero__gracias">Gracias por hacer de este reencuentro algo tan especial</h1>
+      <p class="hero__aforo">El aforo ya está completo y ahora queremos saber si contamos contigo</p>
+      <div class="hero__botones">
+        <a href="#confirmar" class="btn btn-primario" onclick="irAInscripcion(event)">
+          CONFIRMAR ASISTENCIA
+        </a>
+        <a href="#liberar-cupo" class="btn btn-secundario" onclick="irALiberarCupo(event)">
+          LIBERAR CUPO
+        </a>
+      </div>
+      <!-- ===== FIN CAMBIO 30-SEP #3 ===== -->
     </div>
 
     <div class="onda" aria-hidden="true">
@@ -112,9 +168,13 @@
       </p>
 
       <div class="bienvenida-botones">
-        <a href="#inscripcion" class="btn btn-crema-rojo" onclick="irAInscripcion(event)">
-          QUIERO INSCRIBIRME
-        </a>
+        <!-- ===== INICIO CAMBIO 30-SEP #4 ==============================
+             Se quitó el botón QUIERO INSCRIBIRME que iba aquí:
+               <a href="#inscripcion" class="btn btn-crema-rojo"
+                  onclick="irAInscripcion(event)">QUIERO INSCRIBIRME</a>
+             Queda solo CONOCE EL ENCUENTRO.
+             ========================================================= -->
+        <!-- ===== FIN CAMBIO 30-SEP #4 ===== -->
         <a href="#el-encuentro" class="btn btn-borde-dorado">
           CONOCE EL ENCUENTRO
         </a>
@@ -457,6 +517,24 @@
           <summary>¿Qué pasa si actualicé mis datos pero no puedo asistir? <span class="faq-flecha">▼</span></summary>
           <div class="faq-contenido">La actualización de datos permitirá que UNAULA pueda mantener el contacto contigo para futuras actividades de la comunidad de egresados.</div>
         </details>
+
+        <!-- ===== INICIO CAMBIO 30-SEP #5 ==============================
+             Dos preguntas nuevas, al final de <div class="faq-lista">.
+             El enlace "liberar cupo" usa la misma URL que el botón
+             LIBERAR CUPO (URL_LIBERAR_CUPO en assets/js/main.js).
+             ========================================================= -->
+        <details class="faq-item">
+          <summary>¿Cómo libero mi cupo si no puedo asistir? <span class="faq-flecha">▼</span></summary>
+          <div class="faq-contenido">Si ya tienes un cupo confirmado y sabes que no podrás acompañarnos el 6 de noviembre, podrás liberarlo a través del enlace <a href="#liberar-cupo" class="faq-enlace" onclick="irALiberarCupo(event)">liberar cupo</a>. Así podremos asignar ese lugar a otro egresado que se encuentra en lista de espera.</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué significa estar en lista de espera? <span class="faq-flecha">▼</span></summary>
+          <div class="faq-contenido">
+            Significa que tu registro fue recibido, pero en este momento no tienes un cupo confirmado, porque el aforo disponible ya está completo.<br><br>
+            No necesitas volver a registrarte. A medida que se liberen lugares, iremos asignando los cupos disponibles y nos comunicaremos directamente contigo si se habilita uno para ti.
+          </div>
+        </details>
+        <!-- ===== FIN CAMBIO 30-SEP #5 ===== -->
       </div>
     </div>
   </section>
@@ -468,27 +546,33 @@
        ======================================================================== -->
   <section class="seccion-cierre" aria-label="Cierre">
     <div class="contenedor-estrecho">
+      <!-- ===== INICIO CAMBIO 30-SEP #6 ==============================
+           Reemplaza el titular, los versos y el botón anteriores:
+             Titular:  Reserva tu LUGAR
+             Versos:   60 años se cuentan en décadas. / Pero también se
+                       cuentan en personas. / En quienes llegaron con un
+                       sueño. / En quienes encontraron una oportunidad. /
+                       En quienes se graduaron. / En quienes transformaron
+                       su comunidad. / En quienes llevaron el nombre de
+                       UNAULA a otros lugares.
+             Llamado:  Ahora queremos volver a encontrarnos contigo.
+             Dorado:   6 DE NOVIEMBRE · PLAZA MAYOR MEDELLÍN
+             Botón:    QUIERO INSCRIBIRME (se quitó)
+           ========================================================= -->
       <div class="titular-bloque con-trazo">
-        <span class="titular-l1" style="color: var(--texto-claro);">Reserva tu</span>
-        <span class="titular-l2" style="color: var(--texto-claro); font-size: 3.25rem;"><span class="trazo-fin trazo-fin-dorado">LUGAR</span></span>
+        <span class="titular-l1" style="color: var(--texto-claro);">FIESTA</span>
+        <span class="titular-l2" style="color: var(--texto-claro); font-size: 3.25rem;"><span class="trazo-fin trazo-fin-dorado">LLENA</span></span>
       </div>
 
       <div class="versos-cierre">
-        <div class="verso-cierre-item">60 años se cuentan en décadas.</div>
-        <div class="verso-cierre-item">Pero también se cuentan en personas.</div>
-        <div class="verso-cierre-item">En quienes llegaron con un sueño.</div>
-        <div class="verso-cierre-item">En quienes encontraron una oportunidad.</div>
-        <div class="verso-cierre-item">En quienes se graduaron.</div>
-        <div class="verso-cierre-item">En quienes transformaron su comunidad.</div>
-        <div class="verso-cierre-item">En quienes llevaron el nombre de UNAULA a otros lugares.</div>
+        <div class="verso-cierre-item">Gracias por tanto cariño.</div>
+        <div class="verso-cierre-item">Nos emociona ver cómo esta comunidad se movió para encontrarse de nuevo.</div>
+        <div class="verso-cierre-item">Los queremos mucho.</div>
       </div>
 
-      <div class="cierre-llamado">Ahora queremos volver a encontrarnos contigo.</div>
-      <div class="cierre-destacado-dorado">6 DE NOVIEMBRE · PLAZA MAYOR MEDELLÍN</div>
-
-      <a href="#inscripcion" class="btn btn-crema-rojo" style="font-size: 15px; padding: 14px 32px;" onclick="irAInscripcion(event)">
-        QUIERO INSCRIBIRME
-      </a>
+      <div class="cierre-llamado">Nos vemos el 6 de noviembre</div>
+      <div class="cierre-destacado-dorado">PLAZA MAYOR MEDELLÍN</div>
+      <!-- ===== FIN CAMBIO 30-SEP #6 ===== -->
     </div>
   </section>
 
@@ -569,4 +653,4 @@
        ======================================================================== -->
   <script src="assets/js/main.js" defer></script>
 </body>
-</html>
+</html>

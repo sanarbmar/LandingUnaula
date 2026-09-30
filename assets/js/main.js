@@ -1,11 +1,18 @@
 /* =========================================================================
    CONFIGURACIÓN DE UNAULA
 
-   URL_INSCRIPCION es el único valor que hay que cambiar para poner la
-   landing en marcha: es el formulario al que llevan todos los botones de
-   inscripción. Reemplaza el texto de abajo por la dirección real.
+   Son los dos valores que hay que cambiar para poner la landing en marcha.
+   Reemplaza el texto entre comillas por la dirección real de cada uno.
+
+   ===== CAMBIO 30-SEP =====
+   URL_INSCRIPCION  ahora la usan los botones CONFIRMAR ASISTENCIA (antes
+                    INSCRIBIRME). Se conserva el nombre para no romper la
+                    configuración que ya exista.
+   URL_LIBERAR_CUPO es nueva: la usan los botones LIBERAR CUPO y el enlace
+                    de la pregunta frecuente "¿Cómo libero mi cupo...?".
    ========================================================================= */
-const URL_INSCRIPCION = "PEGAR_AQUI_LA_URL_DEL_FORMULARIO_DE_UNAULA";
+const URL_INSCRIPCION  = "PEGAR_AQUI_LA_URL_DEL_FORMULARIO_DE_UNAULA";
+const URL_LIBERAR_CUPO = "PEGAR_AQUI_LA_URL_PARA_LIBERAR_CUPO";
 
 /**
  * ========================================================================
@@ -91,6 +98,16 @@ function irAInscripcion(e) {
   }
   window.open(URL_INSCRIPCION, "_blank", "noopener");
 }
+/* ===== INICIO CAMBIO 30-SEP: botón LIBERAR CUPO ===== */
+function irALiberarCupo(e) {
+  if (e) e.preventDefault();
+  if (!URL_LIBERAR_CUPO || URL_LIBERAR_CUPO.startsWith("PEGAR_")) {
+    console.warn("Falta configurar URL_LIBERAR_CUPO al inicio de este archivo.");
+    return;
+  }
+  window.open(URL_LIBERAR_CUPO, "_blank", "noopener");
+}
+/* ===== FIN CAMBIO 30-SEP ===== */
 function gestionarBarraFija() {
   const hero = document.getElementById("seccion-hero");
   const barra = document.getElementById("barra-fija");

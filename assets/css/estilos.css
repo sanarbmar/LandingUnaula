@@ -1213,3 +1213,64 @@ dialog.modal-historia[open] {
     scroll-behavior: auto !important;
   }
 }
+
+/* ===== INICIO CAMBIO 30-SEP ============================================
+   Estilos nuevos para el bloque del hero (agradecimiento, aviso de aforo
+   y dos botones) y para el botón LIBERAR CUPO de la barra fija inferior.
+   Todo el bloque es nuevo; no modifica reglas anteriores.
+   ======================================================================= */
+.hero__gracias {
+  font-size: clamp(30px, 4.6vw, 66px);   /* entre esc-l1--menor y titular-l1 */
+  font-weight: 800;
+  font-stretch: 62%;
+  line-height: 1;
+  color: var(--rojo-vivo);
+  max-width: min(86vw, 1000px);
+  margin: 3.2rem auto 0;
+  text-wrap: balance;
+}
+.hero__aforo {
+  font-size: clamp(17px, 2.05vw, 30px);  /* misma escala que parrafo-bienvenida */
+  font-stretch: 62%;
+  line-height: 1.2;
+  color: var(--texto);
+  max-width: min(80vw, 820px);
+  margin: 1.1rem auto 0;
+  text-wrap: balance;
+}
+.hero__botones {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.hero__botones .btn {
+  font-size: 15px;
+  padding: 14px 32px;
+  min-width: 220px;
+}
+@media (max-width: 768px) {
+  .hero__gracias { margin-top: 2rem; }
+  .hero__botones {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 8px;
+  }
+  .hero__botones .btn { min-width: 0; }
+}
+.barra-btn-secundario {
+  background-color: transparent;
+  color: var(--crema);
+  border: 1.5px solid var(--dorado);
+}
+.faq-enlace {
+  color: var(--rojo-vivo);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+/* ===== FIN CAMBIO 30-SEP ===== */
