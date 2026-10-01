@@ -32,7 +32,8 @@ orden.
 | Ajustes sin marcador | 9 sep 2026 (tarde) | `2a596e8`, `2ef5dc5` | Favicon; pregunta frecuente sobre fumar y vapear | `index.html`, 2 imágenes nuevas | ⏳ por confirmar | ⏳ por confirmar |
 | `16-SEP` | 16 sep 2026 | `5fab0be` | Horario del evento; pregunta sobre vestuario | `index.html` | ✅ 16 sep | ⏳ por confirmar |
 | `30-SEP` | 30 sep 2026 | `498d617` | Aforo completo: confirmar asistencia, liberar cupo, preguntas nuevas, cierre FIESTA LLENA | `index.html`, `estilos.css`, `main.js` | ⏳ paquete listo | ⏳ por confirmar |
-| `30-SEP-B` | 30 sep 2026 | ⏳ sin commit | Página ajustada al diseño nuevo de Canva: bienvenida con aforo, videos de YouTube, historia de Jeison Correa, textos, proporciones e imágenes | `index.html`, `estilos.css`, `main.js`, 4 imágenes nuevas | ⏳ | ⏳ |
+| `30-SEP-B` | 30 sep 2026 | `0a61174` | Página ajustada al diseño nuevo de Canva: bienvenida con aforo, videos de YouTube, historia de Jeison Correa, textos, proporciones e imágenes | `index.html`, `estilos.css`, `main.js`, 4 imágenes nuevas | ⏳ | ⏳ |
+| `01-OCT` | 1 oct 2026 | ⏳ sin commit | Los 4 videos de Instagram en "60 años. Miles de historias.", con portada propia y ventana para verlos | `index.html`, `estilos.css`, `main.js`, 4 imágenes nuevas | ⏳ | ⏳ |
 
 ## Configuración pendiente en el servidor
 
@@ -47,14 +48,46 @@ y siguen pendientes hasta que alguien los marque como hechos.
 | `og:description` todavía dice "Reserva tu lugar" | `index.html`, `<head>` | ⏳ sin decidir |
 | Cuatro horas de la agenda "Por confirmar" | arreglo `AGENDA` en `main.js` | ⏳ |
 | Cuerpo de las historias de éxito "[HISTORIA COMPLETA PENDIENTE]" | arreglo `HISTORIAS` en `main.js` | ⏳ |
-| Enlaces de los 4 videos de YouTube | arreglo `VIDEOS` en `main.js` (campo `youtube`) | ⏳ sin enlaces: mientras tanto se ve la foto de portada del diseño |
 | Historia completa de Jeison Correa | `HISTORIAS[0].cuerpo` en `main.js` | ⏳ |
 
 ---
 
 ## Detalle por tanda (la más reciente primero)
 
-### `30-SEP-B` — Diseño nuevo de Canva · 30 sep 2026 · sin commit todavía
+### `01-OCT` — Videos de Instagram · 1 oct 2026 · sin commit todavía
+
+**Motivo:** Arbo pasó los cuatro videos de @unaula_medellin para la sección
+"60 años. Miles de historias.".
+
+| # | Video | Formato | Portada |
+|---|---|---|---|
+| 1 | <https://www.instagram.com/p/DcwrTBpgPnv/> ("En estos 60 años, ¿qué le dirías a UNAULA?") | vertical | `video-1-portada.jpg` |
+| 2 | <https://www.instagram.com/p/DceqOTWD4O5/> (mismo título, rector en su oficina) | horizontal | `video-2-portada.jpg` (encuadre 36 %) |
+| 3 | <https://www.instagram.com/p/Ddrk6kWCTul/> ("60 años UNAULA: Unaulistas distinguidos") | vertical | `video-3-portada.jpg` |
+| 4 | <https://www.instagram.com/p/DdXXOa8OXMs/> ("Una convicción y una esperanza") | horizontal | `video-4-portada.jpg` |
+
+**Cómo funciona:** cada tarjeta muestra la portada real de su video. Al hacer clic
+se abre una ventana (`<dialog id="modal-video">`) con el reproductor oficial de
+Instagram (`instagram.com/p/…/embed/`). Instagram solo se carga en ese momento, así
+que la página no se vuelve pesada. Al cerrar la ventana el video se detiene. Se probó
+que el video se reproduce dentro de la ventana y que el tamaño calculado coincide
+con el reproductor:
+
+- vertical: 54 px de franja de la cuenta, más el video en 4:5
+- horizontal: 54 px de franja, más el video en 16:9, más 156 px de me gusta y comentarios
+
+**HTML:** ventana nueva al final del `<body>` (`CAMBIO 01-OCT #1`).
+**JS:** el arreglo `VIDEOS` ahora tiene `enlace`, `portada`, `formato` y `encuadre`.
+Funciones nuevas: `datosVideo`, `abrirModalVideo`, `cerrarModalVideo` e
+`inicializarModalVideo`. Sigue aceptando enlaces de YouTube, que se reproducen
+dentro de la tarjeta.
+**CSS:** bloque `CAMBIO 01-OCT` al final de `estilos.css`, con los estilos de la ventana.
+**Imágenes nuevas:** `video-1-portada.jpg` a `video-4-portada.jpg`, tomadas de cada
+publicación. `video-portada.jpg` (la foto del diseño) ya no se usa, pero se deja en
+la carpeta.
+
+
+### `30-SEP-B` — Diseño nuevo de Canva · 30 sep 2026 · commit `0a61174`
 
 **Motivo:** Magna compartió un diseño nuevo en Canva ("LANDING PAGE"). La página se
 ajustó a ese diseño. Por pedido de Arbo se conservaron los botones actuales, las

@@ -1678,3 +1678,46 @@ button.card-historia-carrusel,
   .seccion-agenda, .seccion-cierre { padding-top: 56px; padding-bottom: 64px; }
 }
 /* ===== FIN CAMBIO 30-SEP-B ===== */
+
+/* ===== INICIO CAMBIO 01-OCT =============================================
+   Ventana para los videos de Instagram (#modal-video). Todo el bloque es
+   nuevo; no modifica reglas anteriores.
+   ======================================================================= */
+dialog.modal-video {
+  border: 0;
+  padding: 0;
+  margin: auto;
+  background: #FFFFFF;
+  border-radius: 12px;
+  overflow: visible;
+  max-width: calc(100vw - 16px);
+  max-height: 92vh;
+  box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.45);
+}
+dialog.modal-video::backdrop {
+  background-color: rgba(26, 26, 26, 0.75);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.modal-video__marco {
+  border-radius: 12px;
+  overflow: hidden;
+  line-height: 0;
+}
+.modal-video__marco iframe {
+  display: block;
+  border: 0;
+  max-width: 100%;
+  background: #FFFFFF;
+}
+.modal-video__cerrar {
+  top: -14px;
+  right: -14px;
+  background-color: var(--crema);
+  border-color: var(--dorado);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+@media (max-width: 480px) {
+  .modal-video__cerrar { top: -44px; right: 0; }
+}
+/* ===== FIN CAMBIO 01-OCT ===== */

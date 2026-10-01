@@ -68,22 +68,33 @@ const HISTORIAS = [
   }
 ];
 
-/* ===== INICIO CAMBIO 30-SEP-B: VIDEOS ====================================
+/* ===== INICIO CAMBIO 01-OCT: VIDEOS =======================================
+   Reemplaza el bloque VIDEOS del 30-SEP-B, que tenía cuatro espacios vacíos
+   para YouTube. Ahora son los cuatro videos de Instagram de @unaula_medellin.
+
    Los cuatro videos de la sección "60 años. Miles de historias.".
-   En `youtube` se pega el enlace del video tal como lo da YouTube
-   (sirve youtube.com/watch?v=..., youtu.be/..., youtube.com/shorts/...)
-   o solo su código. Mientras esté vacío, la tarjeta muestra la foto de
-   `portada` (la misma del diseño de Canva) y el botón no hace nada.
-   YouTube solo se carga cuando la persona hace clic en el video: antes
-   se muestra la miniatura, así la página no se vuelve pesada.
+   - enlace:   dirección del video. Sirve Instagram (instagram.com/p/...,
+               /reel/... o /tv/...) o YouTube (watch?v=, youtu.be/, shorts/).
+   - portada:  foto que se ve en la tarjeta (en assets/img/).
+   - formato:  "vertical" u "horizontal", según cómo se grabó el video.
+               Define el tamaño de la ventana en la que se abre.
+   - encuadre: qué parte de la portada se ve en la tarjeta (CSS
+               object-position). "50% 50%" es el centro.
+   El video solo se carga cuando la persona hace clic: así la página no se
+   vuelve pesada. Instagram se abre en una ventana encima de la página;
+   YouTube se reproduce dentro de la tarjeta.
    ========================================================================= */
 const VIDEOS = [
-  { youtube: "", titulo: "Video 1", portada: "assets/img/video-portada.jpg" },
-  { youtube: "", titulo: "Video 2", portada: "assets/img/video-portada.jpg" },
-  { youtube: "", titulo: "Video 3", portada: "assets/img/video-portada.jpg" },
-  { youtube: "", titulo: "Video 4", portada: "assets/img/video-portada.jpg" }
+  { enlace: "https://www.instagram.com/p/DcwrTBpgPnv/", titulo: "En estos 60 años, ¿qué le dirías a UNAULA?",
+    portada: "assets/img/video-1-portada.jpg", formato: "vertical",   encuadre: "50% 50%" },
+  { enlace: "https://www.instagram.com/p/DceqOTWD4O5/", titulo: "En estos 60 años, ¿qué le dirías a UNAULA?",
+    portada: "assets/img/video-2-portada.jpg", formato: "horizontal", encuadre: "36% 50%" },
+  { enlace: "https://www.instagram.com/p/Ddrk6kWCTul/", titulo: "60 años UNAULA: Unaulistas distinguidos",
+    portada: "assets/img/video-3-portada.jpg", formato: "vertical",   encuadre: "50% 50%" },
+  { enlace: "https://www.instagram.com/p/DdXXOa8OXMs/", titulo: "Una convicción y una esperanza",
+    portada: "assets/img/video-4-portada.jpg", formato: "horizontal", encuadre: "50% 50%" }
 ];
-/* ===== FIN CAMBIO 30-SEP-B: VIDEOS ===== */
+/* ===== FIN CAMBIO 01-OCT: VIDEOS ===== */
 
 /**
  * ========================================================================
@@ -219,49 +230,98 @@ function renderizarHistorias() {
   `).join("");
 }
 
-/* ===== INICIO CAMBIO 30-SEP-B: VIDEOS ===== */
-function idYoutube(valor) {
-  const v = (valor || "").trim();
-  if (!v) return "";
-  if (/^[\w-]{11}$/.test(v)) return v;
-  const m = v.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/|\/live\/)([\w-]{11})/);
-  return m ? m[1] : "";
+/* ===== INICIO CAMBIO 01-OCT: VIDEOS =====
+   Reemplaza las funciones del 30-SEP-B (solo YouTube). Ahora reconoce
+   Instagram y YouTube; Instagram se abre en la ventana #modal-video. */
+function datosVideo(enlace) {
+  const v = (enlace || "").trim();
+  if (!v) return null;
+  const ig = v.match(/instagram\.com\/(?:p|reel|reels|tv)\/([\w-]+)/);
+  if (ig) return { tipo: "instagram", id: ig[1] };
+  if (/^[\w-]{11}$/.test(v)) return { tipo: "youtube", id: v };
+  const yt = v.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/|\/live\/)([\w-]{11})/);
+  return yt ? { tipo: "youtube", id: yt[1] } : null;
 }
 
 function renderizarVideos() {
   const grid = document.getElementById("grid-videos");
   if (!grid || !Array.isArray(VIDEOS)) return;
   grid.innerHTML = VIDEOS.map((v, i) => {
-    const id = idYoutube(v.youtube);
-    const portada = id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : (v.portada || "");
+    const d = datosVideo(v.enlace || v.youtube);
+    const portada = v.portada || (d && d.tipo === "youtube" ? `https://i.ytimg.com/vi/${d.id}/hqdefault.jpg` : "");
+    const activo = d ? "" : "disabled";
     return `
     <div class="card-video">
-      <button type="button" class="card-video__media" data-video="${id}" aria-label="Ver video: ${v.titulo}" ${id ? "" : "disabled"}>
-        ${portada ? `<img src="${portada}" alt="" loading="lazy">` : ""}
+      <button type="button" class="card-video__media" data-indice="${i}" aria-label="Ver video: ${v.titulo}" ${activo}>
+        ${portada ? `<img src="${portada}" alt="" loading="lazy" style="object-position: ${v.encuadre || "50% 50%"}">` : ""}
         <span class="card-video__play" aria-hidden="true"></span>
       </button>
-      <button type="button" class="card-video__ver" data-indice="${i}" ${id ? "" : "disabled"}>Ver Video</button>
+      <button type="button" class="card-video__ver" data-indice="${i}" ${activo}>Ver Video</button>
     </div>`;
   }).join("");
 
   grid.addEventListener("click", (e) => {
     const boton = e.target.closest(".card-video__media, .card-video__ver");
     if (!boton || boton.disabled) return;
-    const tarjeta = boton.closest(".card-video");
-    const media = tarjeta.querySelector(".card-video__media");
+    const v = VIDEOS[Number(boton.dataset.indice)];
+    const d = v && datosVideo(v.enlace || v.youtube);
+    if (!d) return;
+    if (d.tipo === "instagram") { abrirModalVideo(v, d); return; }
+    // YouTube: se reproduce dentro de la misma tarjeta
+    const media = boton.closest(".card-video").querySelector(".card-video__media");
     if (!media) return;               /* el video ya se está reproduciendo */
-    const id = media.dataset.video;
-    if (!id) return;
     const marco = document.createElement("iframe");
     marco.className = "card-video__iframe";
-    marco.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`;
-    marco.title = media.getAttribute("aria-label");
+    marco.src = `https://www.youtube-nocookie.com/embed/${d.id}?autoplay=1&rel=0&playsinline=1`;
+    marco.title = v.titulo;
     marco.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
     marco.allowFullscreen = true;
     media.replaceWith(marco);
   });
 }
-/* ===== FIN CAMBIO 30-SEP-B: VIDEOS ===== */
+
+/* Ventana con el video de Instagram. El tamaño se calcula para que el video
+   completo quepa en la pantalla. Medido sobre los embeds de Instagram:
+   - vertical:   franja de la cuenta (54 px) + video en proporción 4:5
+   - horizontal: franja de la cuenta (54 px) + video 16:9 + franja de
+                 me gusta y comentarios (156 px) */
+let botonVideoDisparador = null;
+function abrirModalVideo(v, d) {
+  const modal = document.getElementById("modal-video");
+  const caja = document.getElementById("modal-video-marco");
+  if (!modal || !caja || typeof modal.showModal !== "function") {
+    window.open(`https://www.instagram.com/p/${d.id}/`, "_blank", "noopener");
+    return;
+  }
+  botonVideoDisparador = document.activeElement;
+  const proporcion = v.formato === "horizontal" ? 9 / 16 : 5 / 4;
+  const franjas = v.formato === "horizontal" ? 54 + 156 : 56;
+  const altoMax = window.innerHeight * 0.9 - 24;
+  const anchoMax = Math.min(window.innerWidth - 32, v.formato === "horizontal" ? 640 : 420);
+  const ancho = Math.max(300, Math.min(anchoMax, (altoMax - franjas) / proporcion));
+  const alto = Math.round(ancho * proporcion + franjas);
+  caja.innerHTML = `<iframe src="https://www.instagram.com/p/${d.id}/embed/" title="${v.titulo}"
+    width="${Math.round(ancho)}" height="${alto}" frameborder="0" scrolling="no"
+    allowtransparency="true" allow="autoplay; encrypted-media; fullscreen"></iframe>`;
+  modal.showModal();
+  document.body.style.overflow = "hidden";
+}
+function cerrarModalVideo() {
+  const modal = document.getElementById("modal-video");
+  if (modal && modal.open) modal.close();
+}
+function inicializarModalVideo() {
+  const modal = document.getElementById("modal-video");
+  if (!modal) return;
+  modal.addEventListener("close", () => {
+    const caja = document.getElementById("modal-video-marco");
+    if (caja) caja.innerHTML = "";              /* detiene el video al cerrar */
+    document.body.style.overflow = "";
+    if (botonVideoDisparador && typeof botonVideoDisparador.focus === "function") botonVideoDisparador.focus();
+  });
+  modal.addEventListener("click", (e) => { if (e.target === modal) cerrarModalVideo(); });
+}
+/* ===== FIN CAMBIO 01-OCT: VIDEOS ===== */
 
 function renderizarAgenda() {
   const grid = document.getElementById("grid-agenda");
@@ -335,4 +395,5 @@ document.addEventListener("DOMContentLoaded", () => {
   renderizarHistorias();
   renderizarAgenda();
   renderizarVideos();   /* CAMBIO 30-SEP-B */
+  inicializarModalVideo();   /* CAMBIO 01-OCT */
 });
