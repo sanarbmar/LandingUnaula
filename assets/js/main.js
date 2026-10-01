@@ -11,8 +11,13 @@
    URL_LIBERAR_CUPO es nueva: la usan los botones LIBERAR CUPO y el enlace
                     de la pregunta frecuente "¿Cómo libero mi cupo...?".
    ========================================================================= */
-const URL_INSCRIPCION  = "PEGAR_AQUI_LA_URL_DEL_FORMULARIO_DE_UNAULA";
-const URL_LIBERAR_CUPO = "PEGAR_AQUI_LA_URL_PARA_LIBERAR_CUPO";
+/* ===== CAMBIO 01-OCT-B: las dos direcciones quedan configuradas. Antes
+   decían "PEGAR_AQUI_...". Ambas llevan al formulario de UNAULA donde el
+   egresado confirma su asistencia o libera su cupo. Las usan los 8 botones
+   y enlaces de la página (barra superior, barra fija, hero, bienvenida y
+   la pregunta frecuente "¿Cómo libero mi cupo...?"). ===== */
+const URL_INSCRIPCION  = "https://siu.unaula.edu.co/graduado/confirmar_asistencia_fiesta.php";
+const URL_LIBERAR_CUPO = "https://siu.unaula.edu.co/graduado/confirmar_asistencia_fiesta.php";
 
 /**
  * ========================================================================

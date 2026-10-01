@@ -33,7 +33,8 @@ orden.
 | `16-SEP` | 16 sep 2026 | `5fab0be` | Horario del evento; pregunta sobre vestuario | `index.html` | ✅ 16 sep | ⏳ por confirmar |
 | `30-SEP` | 30 sep 2026 | `498d617` | Aforo completo: confirmar asistencia, liberar cupo, preguntas nuevas, cierre FIESTA LLENA | `index.html`, `estilos.css`, `main.js` | ⏳ paquete listo | ⏳ por confirmar |
 | `30-SEP-B` | 30 sep 2026 | `0a61174` | Página ajustada al diseño nuevo de Canva: bienvenida con aforo, videos de YouTube, historia de Jeison Correa, textos, proporciones e imágenes | `index.html`, `estilos.css`, `main.js`, 4 imágenes nuevas | ⏳ | ⏳ |
-| `01-OCT` | 1 oct 2026 | ⏳ sin commit | Los 4 videos de Instagram en "60 años. Miles de historias.", con portada propia y ventana para verlos | `index.html`, `estilos.css`, `main.js`, 4 imágenes nuevas | ⏳ | ⏳ |
+| `01-OCT` | 1 oct 2026 | `6c63bd6` | Los 4 videos de Instagram en "60 años. Miles de historias.", con portada propia y ventana para verlos | `index.html`, `estilos.css`, `main.js`, 4 imágenes nuevas | ⏳ | ⏳ |
+| `01-OCT-B` | 1 oct 2026 | ⏳ sin commit | Los botones CONFIRMAR ASISTENCIA y LIBERAR CUPO apuntan al formulario de UNAULA | `main.js` (+ índice en `index.html`) | ⏳ | ⏳ |
 
 ## Configuración pendiente en el servidor
 
@@ -42,8 +43,8 @@ y siguen pendientes hasta que alguien los marque como hechos.
 
 | Qué | Dónde | Estado |
 |---|---|---|
-| `URL_INSCRIPCION`: la usan los botones CONFIRMAR ASISTENCIA | `assets/js/main.js`, línea 1 del código | ⏳ sin URL |
-| `URL_LIBERAR_CUPO`: la usan los botones y el enlace LIBERAR CUPO | `assets/js/main.js`, segunda constante | ⏳ sin URL |
+| `URL_INSCRIPCION`: la usan los botones CONFIRMAR ASISTENCIA | `assets/js/main.js`, al inicio | ✅ 1 oct: `https://siu.unaula.edu.co/graduado/confirmar_asistencia_fiesta.php` |
+| `URL_LIBERAR_CUPO`: la usan los botones y el enlace LIBERAR CUPO | `assets/js/main.js`, segunda constante | ✅ 1 oct: la misma dirección |
 | Quitar `<meta name="robots" content="noindex, nofollow">` | `index.html`, `<head>` | ⏳ solo al publicar en el dominio oficial |
 | `og:description` todavía dice "Reserva tu lugar" | `index.html`, `<head>` | ⏳ sin decidir |
 | Cuatro horas de la agenda "Por confirmar" | arreglo `AGENDA` en `main.js` | ⏳ |
@@ -54,7 +55,28 @@ y siguen pendientes hasta que alguien los marque como hechos.
 
 ## Detalle por tanda (la más reciente primero)
 
-### `01-OCT` — Videos de Instagram · 1 oct 2026 · sin commit todavía
+### `01-OCT-B` — Dirección de los botones · 1 oct 2026 · sin commit todavía
+
+**Motivo:** UNAULA entregó la dirección del formulario.
+
+`URL_INSCRIPCION` y `URL_LIBERAR_CUPO`, al inicio de `main.js`, pasan de
+"PEGAR_AQUI_..." a `https://siu.unaula.edu.co/graduado/confirmar_asistencia_fiesta.php`.
+Las dos llevan al mismo formulario, que se abre en una pestaña nueva. Las usan los 8
+botones y enlaces de la página:
+
+- **CONFIRMAR ASISTENCIA:** barra superior, barra fija inferior, hero y bienvenida.
+- **LIBERAR CUPO:** barra fija inferior, hero, bienvenida y el enlace de la pregunta
+  frecuente "¿Cómo libero mi cupo…?".
+
+En `index.html` solo cambia el índice del `<head>`. Si en el servidor de UNAULA ya
+habían puesto la dirección a mano, basta con revisar que sea esta.
+
+### `01-OCT` — Videos de Instagram · 1 oct 2026 · commit `6c63bd6`
+
+Los videos verticales (1 y 3) muestran la franja "Ver más en Instagram" encima del
+video. Es un error del reproductor de Instagram que no se puede quitar desde la
+landing. La única solución sería alojar esos videos en la propia landing, y Arbo
+decidió dejarlos como están.
 
 **Motivo:** Arbo pasó los cuatro videos de @unaula_medellin para la sección
 "60 años. Miles de historias.".
